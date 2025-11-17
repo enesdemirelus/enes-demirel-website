@@ -120,7 +120,7 @@ export default function Home() {
                   </a>
                 </p>
                 <p>
-                  &gt; working: se intern @{" "}
+                  &gt; working: swe intern @{" "}
                   <a
                     href="https://www.airblox.com/"
                     target="_blank"
@@ -161,6 +161,10 @@ export default function Home() {
             <h2 className="text-2xl font-bold mb-2">projects</h2>
             <p className="text-muted-foreground">
               stuff i've built and still working on.
+              <br />
+              <br />
+              note: some of the projects will open a youtube video because i
+              dont want to pay for hosting anymore.
             </p>
           </div>
 
@@ -297,22 +301,35 @@ export default function Home() {
             <div className="space-y-4">
               <h3 className="font-semibold">experience</h3>
 
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="gap-0">
+                <CardHeader className="pb-0">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle className="text-base">[role title]</CardTitle>
-                      <CardDescription>[company/org]</CardDescription>
+                      <CardTitle className="text-base">
+                        Software Developer Intern
+                      </CardTitle>
+                      <CardDescription>Airblox</CardDescription>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      [dates]
+                      June 2025 - Present
                     </span>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    [what you did, what you learned, what was cool about it]
-                  </p>
+                <CardContent className="pt-1">
+                  <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                    <li>
+                      Building React components based on a design system
+                      provided by the UI/UX team.
+                    </li>
+                    <li>
+                      Using GitLab, Storybook, and Figma to collaborate and
+                      maintain consistent visual standards.
+                    </li>
+                    <li>
+                      Contributing to a frontend codebase used by a growing
+                      development team.
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
 
@@ -388,8 +405,19 @@ export default function Home() {
             <Card className="bg-primary text-primary-foreground">
               <CardContent className="py-4 text-center">
                 <p className="text-sm italic">
-                  "[a personal quote, something you believe about
-                  coding/cs/tech, or just something funny you often say]"
+                  "Chess is just a game, and real people aren't pieces. You
+                  can't assign more value to some of them than to others. Not to
+                  me, not to anyone. People are not a thing that you can
+                  sacrifice. The lesson is – anyone who looks on the world as if
+                  it was a game of chess Deserves to lose."
+                </p>
+                <p className="text-sm italic mt-4">
+                  <a
+                    href="https://www.youtube.com/watch?v=YkYAoOjm27U"
+                    className="text-blue-300 hover:text-blue-200 underline transition-colors"
+                  >
+                    - Harold Finch
+                  </a>
                 </p>
               </CardContent>
             </Card>
