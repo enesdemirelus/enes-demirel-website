@@ -158,23 +158,28 @@ export default function Home() {
       <section id="projects" className="max-w-5xl mx-auto px-6 py-8">
         <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold mb-2">projects</h2>
+            <h2 className="text-2xl font-bold mb-2">main projects</h2>
             <p className="text-muted-foreground">
-              stuff i've built and still working on.
+              stuff i've built or still working on.
               <br />
               <br />
-              note: some of the projects will open a youtube video because i
-              dont want to pay for hosting anymore.
+              note: most of these projects will open a youtube video because i
+              dont want to pay for hosting anymore. You can visit github for the
+              code.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Your existing projects */}
-            <Link href="/occasion" className="group">
+            <Link
+              href="https://www.youtube.com/watch?v=pw8qAaRDEaw"
+              target="_blank"
+              className="group"
+            >
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
                   <div className="flex items-start justify-between">
-                    <div className="text-3xl">🎉</div>
+                    <div className="text-3xl">📆</div>
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   <CardTitle className="text-xl">occasion</CardTitle>
@@ -187,12 +192,13 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">next.js 15</Badge>
+                    <Badge variant="secondary">next.js</Badge>
                     <Badge variant="secondary">typescript</Badge>
+                    <Badge variant="secondary">shadcn/ui</Badge>
                     <Badge variant="secondary">prisma</Badge>
+                    <Badge variant="secondary">railway / mySQL</Badge>
                     <Badge variant="secondary">clerk auth</Badge>
                     <Badge variant="secondary">tailwind</Badge>
-                    <Badge variant="secondary">postgresql</Badge>
                   </div>
                 </CardContent>
               </Card>
@@ -205,28 +211,25 @@ export default function Home() {
                     <div className="text-3xl">🤖</div>
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <CardTitle className="text-xl">ml lab</CardTitle>
+                  <CardTitle className="text-xl">enes' ml lab</CardTitle>
                   <CardDescription className="line-clamp-3">
                     personal machine learning portfolio showcasing various ai/ml
-                    projects including computer vision, nlp, and deep learning
-                    experiments. features interactive demos and detailed
-                    explanations of each model.
+                    projects.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="secondary">python</Badge>
-                    <Badge variant="secondary">pytorch</Badge>
                     <Badge variant="secondary">tensorflow</Badge>
                     <Badge variant="secondary">next.js</Badge>
+                    <Badge variant="secondary">keras</Badge>
                     <Badge variant="secondary">numpy</Badge>
-                    <Badge variant="secondary">scikit-learn</Badge>
                   </div>
                 </CardContent>
               </Card>
             </Link>
 
-            <Link href="/masters" className="group">
+            <Link href="/masters/schools" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -254,21 +257,28 @@ export default function Home() {
               </Card>
             </Link>
 
-            {/* Placeholder for future project */}
-            <Card className="border-dashed">
-              <CardHeader>
-                <div className="text-3xl mb-2">💭</div>
-                <CardTitle className="text-xl">[next project]</CardTitle>
-                <CardDescription>
-                  [idea you're working on or want to build]
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">coming soon</Badge>
-                </div>
-              </CardContent>
-            </Card>
+            {/* More Projects Button */}
+            <Link href="/projects" className="group">
+              <Card className="border-dashed h-full transition-all hover:shadow-lg hover:border-foreground/20">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="text-3xl">📁</div>
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <CardTitle className="text-xl">more projects</CardTitle>
+                  <CardDescription className="line-clamp-3">
+                    explore my complete portfolio of projects, experiments, and
+                    side projects. from full-stack applications to machine
+                    learning models and everything in between.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline">view all →</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>
@@ -318,39 +328,83 @@ export default function Home() {
                 <CardContent className="pt-1">
                   <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
                     <li>
-                      Building React components based on a design system
-                      provided by the UI/UX team.
+                      Recreated UI components from the Figma design system as
+                      reusable React components in a Storybook-driven codebase
+                      using pnpm.
                     </li>
                     <li>
-                      Using GitLab, Storybook, and Figma to collaborate and
-                      maintain consistent visual standards.
+                      Matched each component's visuals and behavior to the
+                      design specs and backend requirements, fixing issues found
+                      during manual checks and sprint reviews.
                     </li>
                     <li>
-                      Contributing to a frontend codebase used by a growing
-                      development team.
+                      Used Git and GitLab in a two-week sprint process to
+                      address code review feedback, resolve merge conflicts, and
+                      ship changes with the team via Jira and Slack.
                     </li>
                   </ul>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="gap-0">
+                <CardHeader className="pb-0">
                   <div className="flex justify-between items-start">
                     <div>
                       <CardTitle className="text-base">
-                        [another role]
+                        Undergraduate Research Assistant
                       </CardTitle>
-                      <CardDescription>[place]</CardDescription>
+                      <CardDescription>
+                        DePaul University, College of Science and Health
+                      </CardDescription>
                     </div>
                     <span className="text-xs text-muted-foreground">
-                      [dates]
+                      Jan. 2025 - Present
                     </span>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    [brief description]
-                  </p>
+                <CardContent className="pt-1">
+                  <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                    <li>
+                      Modeled a Crab Nebula–inspired signal by rotating
+                      synthetic 2D point clouds and optimizing a kernel-based
+                      objective;
+                    </li>
+                    <li>
+                      Implemented angle estimation via bisection and built an
+                      interactive matplotlib slider to explore angle dependence.
+                    </li>
+                    <li>
+                      Implemented and tested an AGD-Until-Guilty method (JAX) to
+                      certify convexity and surface counterexamples via witness
+                      pairs; evaluated behavior on convex and non-convex
+                      functions.
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card className="gap-0">
+                <CardHeader className="pb-0">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle className="text-base">Grader</CardTitle>
+                      <CardDescription>
+                        DePaul University, College of Computing and Digital
+                        Media
+                      </CardDescription>
+                    </div>
+                    <span className="text-xs text-muted-foreground">
+                      Apr. 2025 - June 2025
+                    </span>
+                  </div>
+                </CardHeader>
+                <CardContent className="pt-1">
+                  <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                    <li>
+                      Graded assignments for 90+ Data Structures students and
+                      coordinated with professors to keep grading consistent.
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
             </div>
@@ -371,10 +425,9 @@ export default function Home() {
                     <Badge>python</Badge>
                     <Badge>typescript</Badge>
                     <Badge>javascript</Badge>
-                    <Badge>c++</Badge>
+                    <Badge>c</Badge>
                     <Badge>java</Badge>
                     <Badge>c#</Badge>
-                    <Badge>swift</Badge>
                   </div>
                 </div>
 
@@ -389,14 +442,11 @@ export default function Home() {
                     <Badge variant="secondary">prisma</Badge>
                     <Badge variant="secondary">figma</Badge>
                     <Badge variant="secondary">storybook</Badge>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <h4 className="text-sm font-medium">learning</h4>
-                  <div className="flex flex-wrap gap-1.5">
-                    <Badge variant="outline">jax</Badge>
-                    <Badge variant="outline">deep learning</Badge>
+                    <Badge variant="secondary">keras</Badge>
+                    <Badge variant="secondary">gitlab</Badge>
+                    <Badge variant="secondary">Tkinter</Badge>
+                    <Badge variant="secondary">sqlite3</Badge>
+                    <Badge variant="secondary">jira</Badge>
                   </div>
                 </div>
               </CardContent>
@@ -430,7 +480,7 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <Code2 className="w-4 h-4" />
                   <span>
-                    probably vibe coding something or failing a leetcode
+                    probably watching person of interest or failing a leetcode
                     problem.
                   </span>
                 </div>
@@ -495,11 +545,10 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Terminal className="w-4 h-4" />
-              <span>© {new Date().getFullYear()} [your name]</span>
+              <span>© {new Date().getFullYear()} enes demirel</span>
             </div>
             <p className="font-mono text-xs">
-              [fun footer text - like "built at 3am" or "powered by
-              stackoverflow"]
+              you should really watch person of interest.
             </p>
           </div>
         </div>
