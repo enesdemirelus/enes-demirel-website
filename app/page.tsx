@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+import { ModeToggle } from "@/components/mode-toggle";
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
@@ -33,11 +35,11 @@ export default function Home() {
       {/* Minimal header */}
       <header className="border-b">
         <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2 font-mono text-sm">
+          <Link href="/" className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity">
             <Terminal className="w-4 h-4" />
             <span>enesdemirel</span>
-          </div>
-          <div className="flex gap-6 text-sm">
+          </Link>
+          <div className="flex gap-6 text-sm items-center">
             <a href="#projects" className="hover:underline">
               projects
             </a>
@@ -47,6 +49,7 @@ export default function Home() {
             <a href="#contact" className="hover:underline">
               contact
             </a>
+            <ModeToggle />
           </div>
         </nav>
       </header>
@@ -422,12 +425,12 @@ export default function Home() {
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium">languages</h4>
                   <div className="flex flex-wrap gap-1.5">
-                    <Badge>python</Badge>
-                    <Badge>typescript</Badge>
-                    <Badge>javascript</Badge>
-                    <Badge>c</Badge>
-                    <Badge>java</Badge>
-                    <Badge>c#</Badge>
+                    <Badge variant="secondary">python</Badge>
+                    <Badge variant="secondary">typescript</Badge>
+                    <Badge variant="secondary">javascript</Badge>
+                    <Badge variant="secondary">c</Badge>
+                    <Badge variant="secondary">java</Badge>
+                    <Badge variant="secondary">c#</Badge>
                   </div>
                 </div>
 
@@ -452,7 +455,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="bg-primary text-primary-foreground">
+            <Card className="bg-primary text-primary-foreground dark:bg-secondary dark:text-secondary-foreground">
               <CardContent className="py-4 text-center">
                 <p className="text-sm italic">
                   "Chess is just a game, and real people aren't pieces. You
@@ -464,7 +467,7 @@ export default function Home() {
                 <p className="text-sm italic mt-4">
                   <a
                     href="https://www.youtube.com/watch?v=YkYAoOjm27U"
-                    className="text-blue-300 hover:text-blue-200 underline transition-colors"
+                    className="text-blue-300 dark:text-blue-600 hover:text-blue-200 dark:hover:text-blue-500 underline transition-colors"
                   >
                     - Harold Finch
                   </a>

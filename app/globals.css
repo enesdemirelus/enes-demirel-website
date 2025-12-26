@@ -43,10 +43,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-body {
-  background: #ffffff;
-  color: #171717;
-}
+
 
 :root {
   --radius: 0.625rem;
