@@ -19,7 +19,6 @@ export default function PasswordProtection({
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is already authenticated
     const authenticated = localStorage.getItem(STORAGE_KEY) === "true";
     setIsAuthenticated(authenticated);
     setIsLoading(false);

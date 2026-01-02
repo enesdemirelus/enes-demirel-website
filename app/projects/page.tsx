@@ -1,46 +1,137 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Terminal, ArrowLeft, ArrowUpRight } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Terminal, ArrowUpRight } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
+import { useState } from "react";
 
 interface Project {
   emoji: string;
   title: string;
   description: string;
   tags: string[];
+  categories: string[];
   slug: string;
 }
 
+const CATEGORIES = [
+  "Machine Learning",
+  "Next.js",
+  "React",
+  "Python",
+  "C",
+  "C++",
+  "Java",
+  "C#",
+];
+
 const projects: Project[] = [
   {
-    emoji: "🎮",
-    title: "game hub",
+    emoji: "📆",
+    title: "occasion",
     description:
-      "multiplayer gaming platform with real-time matchmaking, player statistics tracking, and integrated voice chat. features custom game modes and tournament support.",
-    tags: ["react", "node.js", "socket.io", "mongodb", "redis"],
-    slug: "game-hub",
+      "full-stack event management platform with user authentication, real-time event creation, category filtering, and collaborative planning features. built with modern web technologies and deployed on vercel.",
+    tags: [
+      "next.js",
+      "typescript",
+      "shadcn/ui",
+      "prisma",
+      "railway / mySQL",
+      "clerk auth",
+      "tailwind",
+    ],
+    categories: ["Web Development", "Next.js", "React"],
+    slug: "occasion",
+  },
+  {
+    emoji: "🤖",
+    title: "enes' ml lab",
+    description:
+      "personal machine learning portfolio showcasing various ai/ml projects.",
+    tags: ["python", "tensorflow", "next.js", "keras", "numpy"],
+    categories: [
+      "Machine Learning",
+      "Web Development",
+      "Next.js",
+      "React",
+      "Python",
+    ],
+    slug: "enes-ml-lab",
+  },
+  {
+    emoji: "📊",
+    title: "masters tracker",
+    description:
+      "comprehensive grad school application tracker with database management, deadline tracking, and program comparison features. includes password-protected personal tracker and demo mode for showcasing.",
+    tags: [
+      "next.js 15",
+      "typescript",
+      "mantine ui",
+      "prisma",
+      "postgresql",
+      "vercel",
+    ],
+    categories: ["Web Development", "Next.js", "React"],
+    slug: "masters-tracker",
+  },
+  {
+    emoji: "🎥",
+    title: "Movie Recommender AI",
+    description:
+      "A Next.js movie recommender that encodes each movie's metadata/overview using a pretrained SentenceTransformer (all-MiniLM-L6-v2) into embedding vectors, then recommends similar movies by cosine similarity computed as a dot product on normalized embeddings.",
+    tags: [
+      "react",
+      "node.js",
+      "next.js",
+      "tensorflow",
+      "transformers",
+      "embedding",
+      "python",
+      "numpy",
+      "pandas",
+      "keras",
+    ],
+    categories: [
+      "Machine Learning",
+      "Web Development",
+      "Next.js",
+      "React",
+      "Python",
+    ],
+    slug: "ai-movie-recommender",
   },
 ];
 
-import { ModeToggle } from "@/components/mode-toggle";
-
 export default function Projects() {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const toggleCategory = (category: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  const filteredProjects =
+    selectedCategories.length === 0
+      ? projects
+      : projects.filter((project) =>
+          selectedCategories.every((category) =>
+            project.categories.includes(category)
+          )
+        );
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <header className="border-b">
         <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity">
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity"
+          >
             <Terminal className="w-4 h-4" />
             <span>enesdemirel</span>
           </Link>
@@ -59,45 +150,95 @@ export default function Projects() {
         </nav>
       </header>
 
-      <section className="max-w-5xl mx-auto px-6 py-8">
+      <section className="max-w-5xl mx-auto px-6 py-8 flex-grow w-full">
         <div className="space-y-8">
           <div>
             <h1 className="text-4xl font-bold mb-4">all projects</h1>
-            <p className="text-muted-foreground">
-              collection of my projects and experiments
-            </p>
+            <p className="text-muted-foreground">collection of my projects</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 pt-8">
-            {projects.map((project) => (
-              <Link
-                key={project.title}
-                href={`/projects/${project.slug}`}
-                className="group"
-              >
-                <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="text-3xl">{project.emoji}</div>
-                      <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div>
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map((category) => (
+                <button
+                  key={category}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleCategory(category);
+                  }}
+                  type="button"
+                  className={`px-2.5 py-1 text-xs font-medium rounded-md border transition-all whitespace-nowrap ${
+                    selectedCategories.includes(category)
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-background border-border hover:border-foreground/40"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+
+            <div className="text-xs text-muted-foreground mt-2">
+              {filteredProjects.length} project
+              {filteredProjects.length !== 1 ? "s" : ""}
+              {selectedCategories.length > 0 && (
+                <span className="ml-1.5">
+                  ({selectedCategories.join(" + ")})
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="min-h-[400px]">
+            {filteredProjects.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredProjects.map((project) => (
+                  <Link
+                    key={project.title}
+                    href={`/projects/${project.slug}`}
+                    className="group block h-full"
+                  >
+                    <div className="border rounded-lg p-4 transition-all hover:border-foreground/40 hover:shadow-md bg-background/50 backdrop-blur-sm h-full flex flex-col">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="text-3xl">{project.emoji}</div>
+                        <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+
+                      <h3 className="text-lg font-bold mb-2 group-hover:text-foreground/80 transition-colors">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed mb-4 flex-grow">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-0.5 text-[10px] font-medium bg-secondary text-secondary-foreground rounded-full whitespace-nowrap inline-block"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <CardDescription className="line-clamp-3">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-20 text-center">
+                <p className="text-muted-foreground text-sm mb-2">
+                  no projects match the selected filters
+                </p>
+                <button
+                  onClick={() => setSelectedCategories([])}
+                  className="text-xs text-foreground hover:underline"
+                >
+                  clear filters
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -29,13 +29,14 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="min-h-screen">
-      {/* Subtle grid background */}
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      {/* Minimal header */}
       <header className="border-b">
         <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity">
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity"
+          >
             <Terminal className="w-4 h-4" />
             <span>enesdemirel</span>
           </Link>
@@ -54,7 +55,6 @@ export default function Home() {
         </nav>
       </header>
 
-      {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-8">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
@@ -98,7 +98,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Quick stats - terminal style */}
         <Card className="mt-12 bg-muted/50 border-dashed">
           <CardContent className="px-4 py-3 font-mono text-sm">
             <div className="space-y-2">
@@ -157,7 +156,6 @@ export default function Home() {
         </Card>
       </section>
 
-      {/* Projects */}
       <section id="projects" className="max-w-5xl mx-auto px-6 py-8">
         <div className="space-y-8">
           <div>
@@ -173,7 +171,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Your existing projects */}
             <Link
               href="https://www.youtube.com/watch?v=pw8qAaRDEaw"
               target="_blank"
@@ -232,7 +229,11 @@ export default function Home() {
               </Card>
             </Link>
 
-            <Link href="/masters/schools" className="group">
+            <Link
+              href="https://www.youtube.com/watch?v=aqs_lUsFdGQ"
+              className="group"
+              target="_blank"
+            >
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -260,7 +261,6 @@ export default function Home() {
               </Card>
             </Link>
 
-            {/* More Projects Button */}
             <Link href="/projects" className="group">
               <Card className="border-dashed h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
@@ -286,31 +286,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About - asymmetric layout */}
       <section id="about" className="max-w-5xl mx-auto px-6 py-8">
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Main content */}
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="text-2xl font-bold mb-4">about me</h2>
               <div className="prose prose-neutral space-y-4 text-muted-foreground">
                 <p>
-                  [write naturally here - who are you? what got you into cs?
-                  what problems do you actually find interesting? be honest and
-                  casual]
+                  Hi, my name is Enes. I am 22 years old and living in Chicago,
+                  IL. I am currently studying Math and Computer Science at
+                  DePaul University. I am interested in Machine Learning,
+                  Artificial Intelligence, Software Development, and Math.
                 </p>
                 <p>
-                  [more about your journey - what you're learning, what excites
-                  you, maybe a project that went horribly wrong but taught you a
-                  lot]
+                  As far as I can remember, I have always been interested in
+                  coding and math. I love the mathematical side of computers a
+                  lot, and that is what excites me the most. If you go back to
+                  elementary grade Enes, he would say that he wants to be a
+                  software engineer as well.
                 </p>
                 <p>
-                  outside of coding: [hobbies, interests, what you do for fun]
+                  Outside of coding, I like to play soccer, play FIFA, watch F1,
+                  and enjoy some other sports.
                 </p>
               </div>
             </div>
 
-            {/* Experience cards */}
             <div className="space-y-4">
               <h3 className="font-semibold">experience</h3>
 
@@ -413,12 +414,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="text-sm font-mono text-muted-foreground">
-                  // stack
+                  stack
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -497,7 +497,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact */}
       <section id="contact" className="max-w-5xl mx-auto px-6 py-8">
         <Card className="overflow-hidden">
           <CardHeader className="text-center py-6">
@@ -542,7 +541,6 @@ export default function Home() {
         </Card>
       </section>
 
-      {/* Footer */}
       <footer className="border-t mt-8">
         <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
@@ -557,7 +555,6 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Modal */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-black/50"
