@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Terminal, ArrowUpRight } from "lucide-react";
+import { Terminal, ArrowUpRight, Github, Youtube } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useState } from "react";
 
@@ -23,6 +23,7 @@ const CATEGORIES = [
   "C++",
   "Java",
   "C#",
+  "Automation",
 ];
 
 const projects: Project[] = [
@@ -100,6 +101,106 @@ const projects: Project[] = [
     ],
     slug: "ai-movie-recommender",
   },
+  {
+    emoji: "🤖",
+    title: "Telegram Habit Tracker Bot",
+    description:
+      "telegram bot for tracking daily/weekly habits with a simple command-based UX. supports habit dashboard, add/delete/update habits, weekly goals, and streak updates. data is stored in supabase.",
+    tags: [
+      "python",
+      "python-telegram-bot",
+      "supabase",
+      "postgresql",
+      "python-dotenv",
+    ],
+    categories: ["Python", "Automation"],
+    slug: "telegram-habit-tracker-bot",
+  },
+  {
+    emoji: "👤",
+    title: "AI Age Estimator",
+    description:
+      "web app that estimates age from photos using face detection and a pre-trained neural network. built with Next.js frontend and Flask backend serving an EfficientNet-based Keras model for accurate age prediction.",
+    tags: [
+      "next.js",
+      "react",
+      "face-api.js",
+      "flask",
+      "keras",
+      "efficientnet",
+      "python",
+      "neural networks",
+    ],
+    categories: ["Machine Learning", "Next.js", "React", "Python"],
+    slug: "ai-age-estimator",
+  },
+  {
+    emoji: "🇹🇷",
+    title: "Turkish Name Classifier",
+    description:
+      "neural network that classifies Turkish vs non-Turkish names using character-level tokenization and bidirectional LSTM. built to identify Turkish students from the dean's list for Turkish Student Association event invitations.",
+    tags: [
+      "python",
+      "tensorflow",
+      "keras",
+      "LSTM",
+      "neural networks",
+      "pandas",
+      "scikit-learn",
+    ],
+    categories: ["Machine Learning", "Python"],
+    slug: "turkish-name-classifier",
+  },
+  {
+    emoji: "🔍",
+    title: "Biometric Attribute Classifier",
+    description:
+      "real-time facial attribute classification using a neural network. uses OpenCV for face detection with Haar Cascades and a trained Keras model for binary classification with live camera feed and confidence scores.",
+    tags: [
+      "python",
+      "tensorflow",
+      "keras",
+      "opencv",
+      "computer vision",
+      "neural networks",
+    ],
+    categories: ["Machine Learning", "Python"],
+    slug: "biometric-attribute-classifier",
+  },
+  {
+    emoji: "🖼️",
+    title: "Image Editor",
+    description:
+      "desktop image editor with real-time adjustments for brightness, contrast, sharpness, and color. built with Tkinter GUI framework and PIL for image processing, featuring live preview and save functionality.",
+    tags: ["python", "tkinter", "PIL", "pillow", "ttkbootstrap", "GUI"],
+    categories: ["Python"],
+    slug: "image-editor",
+  },
+  {
+    emoji: "💬",
+    title: "Chat Application",
+    description:
+      "real-time messaging application with socket-based server-client architecture. features username selection, user count display, message/nudge/image sharing, chat history persistence, macOS notifications, and sound effects.",
+    tags: [
+      "python",
+      "tkinter",
+      "sockets",
+      "networking",
+      "playsound",
+      "imgur API",
+    ],
+    categories: ["Python"],
+    slug: "chat-app",
+  },
+  {
+    emoji: "📚",
+    title: "Library Management System",
+    description:
+      "full-featured library management software with role-based access for admins and users. includes book inventory management, rental tracking with SQLite database, email notifications for returns, and comprehensive authentication system.",
+    tags: ["python", "tkinter", "sqlite3", "database", "GUI"],
+    categories: ["Python"],
+    slug: "library-management-system",
+  },
 ];
 
 export default function Projects() {
@@ -144,6 +245,9 @@ export default function Projects() {
             </Link>
             <Link href="/#contact" className="hover:underline">
               contact
+            </Link>
+            <Link href="/you-should-really-watch" className="hover:underline">
+              YSRW
             </Link>
             <ModeToggle />
           </div>
@@ -225,6 +329,33 @@ export default function Projects() {
                     </div>
                   </Link>
                 ))}
+
+                <div className="border-dashed border-2 rounded-lg p-4 bg-background/50 backdrop-blur-sm h-full flex flex-col justify-center items-center gap-4">
+                  <h3 className="text-lg font-bold text-center">
+                    Explore More
+                  </h3>
+                  <p className="text-xs text-muted-foreground text-center">
+                    Check out my YouTube channel and GitHub for more projects
+                  </p>
+                  <div className="flex gap-3">
+                    <a
+                      href="https://www.youtube.com/@demirelnes"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-lg border hover:border-foreground/40 transition-all hover:shadow-md bg-background group"
+                    >
+                      <Youtube className="w-6 h-6 group-hover:text-red-500 transition-colors" />
+                    </a>
+                    <a
+                      href="https://github.com/enesdemirelus?tab=repositories"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 rounded-lg border hover:border-foreground/40 transition-all hover:shadow-md bg-background group"
+                    >
+                      <Github className="w-6 h-6 group-hover:text-foreground/80 transition-colors" />
+                    </a>
+                  </div>
+                </div>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -251,7 +382,21 @@ export default function Projects() {
               <span>© {new Date().getFullYear()} enes demirel</span>
             </div>
             <p className="font-mono text-xs">
-              you should really watch person of interest.
+              <Link
+                href="/you-should-really-watch"
+                className="underline hover:opacity-80"
+              >
+                you should really watch
+              </Link>{" "}
+              <a
+                href="https://www.imdb.com/title/tt1839578/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:opacity-80"
+              >
+                person of interest
+              </a>
+              .
             </p>
           </div>
         </div>

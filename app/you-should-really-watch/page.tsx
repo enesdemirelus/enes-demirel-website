@@ -1,0 +1,202 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Terminal, ChevronDown } from "lucide-react";
+import { ModeToggle } from "@/components/mode-toggle";
+
+type Category = "Watch" | "Read" | "Listen" | "Play" | "Watch - Subscribe";
+
+interface Item {
+  title: string;
+  description: string;
+  link?: string;
+}
+
+const items: Record<Category, Item[]> = {
+  Watch: [
+    {
+      title: "Interstellar",
+      description: "A mind-bending journey through space and time",
+      link: "https://www.imdb.com/title/tt0816692/",
+    },
+  ],
+  Read: [
+    {
+      title: "Project Hail Mary",
+      description: "A brilliant sci-fi adventure about saving humanity",
+      link: "https://www.goodreads.com/book/show/54493401-project-hail-mary",
+    },
+  ],
+  Listen: [
+    {
+      title: "Welcome to the Machine",
+      description: "Pink Floyd",
+      link: "https://www.youtube.com/watch?v=lt-udg9zQSE",
+    },
+  ],
+  Play: [
+    {
+      title: "Stray",
+      description: "A beautiful adventure game about a cat",
+      link: "https://store.steampowered.com/app/1332010/Stray/",
+    },
+  ],
+  "Watch - Subscribe": [
+    {
+      title: "3Blue1Brown",
+      description: "Math education through stunning visualizations",
+      link: "https://www.youtube.com/@3blue1brown",
+    },
+  ],
+};
+
+export default function YouShouldReallyWatch() {
+  const [selectedCategory, setSelectedCategory] = useState<Category>("Watch");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const categories: Category[] = [
+    "Watch",
+    "Read",
+    "Listen",
+    "Play",
+    "Watch - Subscribe",
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+      <header className="border-b">
+        <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+          <Link
+            href="/"
+            className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity"
+          >
+            <Terminal className="w-4 h-4" />
+            <span>enesdemirel</span>
+          </Link>
+          <div className="flex gap-6 text-sm items-center">
+            <Link href="/#projects" className="hover:underline">
+              projects
+            </Link>
+            <Link href="/#about" className="hover:underline">
+              about
+            </Link>
+            <Link href="/#contact" className="hover:underline">
+              contact
+            </Link>
+            <Link href="/you-should-really-watch" className="hover:underline">
+              YSRW
+            </Link>
+            <ModeToggle />
+          </div>
+        </nav>
+      </header>
+
+      <section className="max-w-5xl mx-auto px-6 py-16 flex-grow w-full">
+        <div className="space-y-6">
+          {/* Dynamic Title */}
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <h1 className="text-2xl font-semibold flex items-center gap-2">
+                <span>You Should Really</span>
+                <div className="relative inline-block">
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="inline-flex items-center gap-1 cursor-pointer hover:text-primary transition-colors px-1 -mx-1 rounded"
+                  >
+                    <span className="underline decoration-2">
+                      {selectedCategory}
+                    </span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {/* Dropdown Menu */}
+                  {isDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 bg-background border rounded-md shadow-lg overflow-hidden z-10 min-w-[180px]">
+                      {categories.map((category) => (
+                        <button
+                          key={category}
+                          onClick={() => {
+                            setSelectedCategory(category);
+                            setIsDropdownOpen(false);
+                          }}
+                          className={`w-full px-4 py-2 text-left hover:bg-muted transition-colors text-sm ${
+                            selectedCategory === category ? "font-semibold" : ""
+                          }`}
+                        >
+                          {category}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </h1>
+              <span className="text-xs text-muted-foreground/60 animate-pulse">
+                ← click
+              </span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              A curated list of things I enjoyed a lot and I think you should
+              too. <br />
+              Note: These items are not unique or rare, most of them are even
+              mainstream.
+              <br />
+              So, don't expect anything groundbreaking or revolutionary.
+            </p>
+          </div>
+
+          {/* Simple Bullet List */}
+          <ul className="list-disc list-inside space-y-2 text-foreground/80">
+            {items[selectedCategory].map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline transition-colors"
+                >
+                  {item.title}
+                </a>
+                : {item.description}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <footer className="border-t mt-8">
+        <div className="max-w-5xl mx-auto px-6 py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <Terminal className="w-4 h-4" />
+              <span>© {new Date().getFullYear()} enes demirel</span>
+            </div>
+            <p className="font-mono text-xs">
+              <Link
+                href="/you-should-really-watch"
+                className="underline hover:opacity-80"
+              >
+                you should really watch
+              </Link>{" "}
+              <a
+                href="https://www.imdb.com/title/tt1839578/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:opacity-80"
+              >
+                person of interest
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

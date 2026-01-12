@@ -27,8 +27,10 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
+      <link rel="preload" as="image" href="/gs.avif" />
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <header className="border-b">
@@ -50,6 +52,9 @@ export default function Home() {
             <a href="#contact" className="hover:underline">
               contact
             </a>
+            <Link href="/you-should-really-watch" className="hover:underline">
+              YSRW
+            </Link>
             <ModeToggle />
           </div>
         </nav>
@@ -171,11 +176,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Link
-              href="https://www.youtube.com/watch?v=pw8qAaRDEaw"
-              target="_blank"
-              className="group"
-            >
+            <Link href="/projects/occasion" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -229,11 +230,7 @@ export default function Home() {
               </Card>
             </Link>
 
-            <Link
-              href="https://www.youtube.com/watch?v=aqs_lUsFdGQ"
-              className="group"
-              target="_blank"
-            >
+            <Link href="/projects/masters-tracker" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
                   <div className="flex items-start justify-between">
@@ -483,7 +480,7 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <Code2 className="w-4 h-4" />
                   <span>
-                    probably watching person of interest or failing a leetcode
+                    probably watching person of interest or grinding a leetcode
                     problem.
                   </span>
                 </div>
@@ -549,7 +546,21 @@ export default function Home() {
               <span>© {new Date().getFullYear()} enes demirel</span>
             </div>
             <p className="font-mono text-xs">
-              you should really watch person of interest.
+              <Link
+                href="/you-should-really-watch"
+                className="underline hover:opacity-80"
+              >
+                you should really watch
+              </Link>{" "}
+              <a
+                href="https://www.imdb.com/title/tt1839578/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:opacity-80"
+              >
+                person of interest
+              </a>
+              .
             </p>
           </div>
         </div>
@@ -570,6 +581,9 @@ export default function Home() {
               width={1200}
               height={800}
               className="rounded-lg object-contain max-h-[90vh]"
+              priority
+              loading="eager"
+              quality={85}
             />
           </div>
         </div>
