@@ -98,49 +98,44 @@ export default function YouShouldReallyWatch() {
         <div className="space-y-6">
           {/* Dynamic Title */}
           <div className="space-y-2">
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-semibold flex items-center gap-2">
-                <span>You Should Really</span>
-                <div className="relative inline-block">
-                  <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="inline-flex items-center gap-1 cursor-pointer hover:text-primary transition-colors px-1 -mx-1 rounded"
-                  >
-                    <span className="underline decoration-2">
-                      {selectedCategory}
-                    </span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        isDropdownOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
+            <h1 className="text-2xl font-semibold flex items-center gap-2">
+              <span>You Should Really</span>
+              <div className="relative inline-block">
+                <button
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  className="inline-flex items-center gap-1 cursor-pointer hover:text-primary transition-colors px-1 -mx-1 rounded"
+                >
+                  <span className="underline decoration-2">
+                    {selectedCategory}
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-                  {/* Dropdown Menu */}
-                  {isDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 bg-background border rounded-md shadow-lg overflow-hidden z-10 min-w-[180px]">
-                      {categories.map((category) => (
-                        <button
-                          key={category}
-                          onClick={() => {
-                            setSelectedCategory(category);
-                            setIsDropdownOpen(false);
-                          }}
-                          className={`w-full px-4 py-2 text-left hover:bg-muted transition-colors text-sm ${
-                            selectedCategory === category ? "font-semibold" : ""
-                          }`}
-                        >
-                          {category}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </h1>
-              <span className="text-xs text-muted-foreground/60 animate-pulse">
-                ← click
-              </span>
-            </div>
+                {/* Dropdown Menu */}
+                {isDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 bg-background border rounded-md shadow-lg overflow-hidden z-10 min-w-[180px]">
+                    {categories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => {
+                          setSelectedCategory(category);
+                          setIsDropdownOpen(false);
+                        }}
+                        className={`w-full px-4 py-2 text-left hover:bg-muted transition-colors text-sm ${
+                          selectedCategory === category ? "font-semibold" : ""
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </h1>
             <p className="text-sm text-muted-foreground">
               A curated list of things I enjoyed a lot and I think you should
               too. <br />
