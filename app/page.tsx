@@ -30,7 +30,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <link rel="preload" as="image" href="/gs.avif" />
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <header className="border-b">

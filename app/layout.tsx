@@ -17,6 +17,20 @@ export const metadata: Metadata = {
   title: "Enes Demirel",
   description:
     "Personal website of Enes Demirel containing resume, school info, projects and more",
+  openGraph: {
+    images: [
+      {
+        url: "/web-app-manifest-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Enes Demirel",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    images: ["/web-app-manifest-512x512.png"],
+  },
 };
 
 export default function RootLayout({
