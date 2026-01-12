@@ -30,6 +30,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <link rel="preload" as="image" href="/gs.avif" />
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <header className="border-b">
@@ -175,35 +176,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/projects/occasion" className="group">
-              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">📆</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">occasion</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    full-stack event management platform with user
-                    authentication, real-time event creation, category
-                    filtering, and collaborative planning features. built with
-                    modern web technologies and deployed on vercel.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">next.js</Badge>
-                    <Badge variant="secondary">typescript</Badge>
-                    <Badge variant="secondary">shadcn/ui</Badge>
-                    <Badge variant="secondary">prisma</Badge>
-                    <Badge variant="secondary">railway / mySQL</Badge>
-                    <Badge variant="secondary">clerk auth</Badge>
-                    <Badge variant="secondary">tailwind</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-
             <Link href="/enes-ml-lab" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
@@ -252,6 +224,35 @@ export default function Home() {
                     <Badge variant="secondary">prisma</Badge>
                     <Badge variant="secondary">postgresql</Badge>
                     <Badge variant="secondary">vercel</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link href="/projects/occasion" className="group">
+              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="text-3xl">📆</div>
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <CardTitle className="text-xl">occasion</CardTitle>
+                  <CardDescription className="line-clamp-3">
+                    full-stack event management platform with user
+                    authentication, real-time event creation, category
+                    filtering, and collaborative planning features. built with
+                    modern web technologies and deployed on vercel.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary">next.js</Badge>
+                    <Badge variant="secondary">typescript</Badge>
+                    <Badge variant="secondary">shadcn/ui</Badge>
+                    <Badge variant="secondary">prisma</Badge>
+                    <Badge variant="secondary">railway / mySQL</Badge>
+                    <Badge variant="secondary">clerk auth</Badge>
+                    <Badge variant="secondary">tailwind</Badge>
                   </div>
                 </CardContent>
               </Card>

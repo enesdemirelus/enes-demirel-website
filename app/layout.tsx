@@ -20,6 +20,30 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
+  openGraph: {
+    title: "Enes Demirel",
+    description:
+      "Personal website of Enes Demirel containing resume, school info, projects and more",
+    url: "https://demirelenes.dev",
+    siteName: "Enes Demirel",
+    images: [
+      {
+        url: "/icon.svg",
+        width: 100,
+        height: 100,
+        alt: "Enes Demirel",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Enes Demirel",
+    description:
+      "Personal website of Enes Demirel containing resume, school info, projects and more",
+    images: ["/icon.svg"],
+  },
 };
 
 export default function RootLayout({
