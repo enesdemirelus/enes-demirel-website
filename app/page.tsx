@@ -499,8 +499,8 @@ export default function Home() {
           <CardHeader className="text-center py-6">
             <CardTitle className="text-2xl">let's connect</CardTitle>
             <CardDescription className="text-base">
-              I don't think you care, but if you need to contact me, you can do
-              so via email, github, or linkedin.
+              If you need to contact me, you can do so via email, github, or
+              linkedin.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap justify-center gap-3 pb-6 pt-0">

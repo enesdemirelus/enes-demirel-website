@@ -17,24 +17,6 @@ export const metadata: Metadata = {
   title: "Enes Demirel",
   description:
     "Personal website of Enes Demirel containing resume, school info, projects and more",
-  icons: {
-    icon: "/icon.svg",
-  },
-  openGraph: {
-    title: "Enes Demirel",
-    description:
-      "Personal website of Enes Demirel containing resume, school info, projects and more",
-    url: "https://demirelenes.dev",
-    siteName: "Enes Demirel",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Enes Demirel",
-    description:
-      "Personal website of Enes Demirel containing resume, school info, projects and more",
-  },
 };
 
 export default function RootLayout({
