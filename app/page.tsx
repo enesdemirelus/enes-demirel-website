@@ -584,8 +584,6 @@ export default function Home() {
             width={1200}
             height={800}
             className="rounded-lg object-contain max-h-[90vh]"
-            priority
-            loading="eager"
             quality={85}
           />
         </div>

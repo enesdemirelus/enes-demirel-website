@@ -26,23 +26,14 @@ export const metadata: Metadata = {
       "Personal website of Enes Demirel containing resume, school info, projects and more",
     url: "https://demirelenes.dev",
     siteName: "Enes Demirel",
-    images: [
-      {
-        url: "/icon.svg",
-        width: 100,
-        height: 100,
-        alt: "Enes Demirel",
-      },
-    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Enes Demirel",
     description:
       "Personal website of Enes Demirel containing resume, school info, projects and more",
-    images: ["/icon.svg"],
   },
 };
 
