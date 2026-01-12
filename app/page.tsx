@@ -43,13 +43,13 @@ export default function Home() {
             <span>enesdemirel</span>
           </Link>
           <div className="flex gap-6 text-sm items-center">
-            <a href="#projects" className="hover:underline">
+            <a href="#projects" className="hover:underline hidden sm:inline">
               projects
             </a>
-            <a href="#about" className="hover:underline">
+            <a href="#about" className="hover:underline hidden sm:inline">
               about
             </a>
-            <a href="#contact" className="hover:underline">
+            <a href="#contact" className="hover:underline hidden sm:inline">
               contact
             </a>
             <Link href="/you-should-really-watch" className="hover:underline">

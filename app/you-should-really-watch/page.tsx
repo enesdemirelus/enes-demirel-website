@@ -105,14 +105,17 @@ export default function YouShouldReallyWatch() {
             <Terminal className="w-4 h-4" />
             <span>enesdemirel</span>
           </Link>
-          <div className="flex gap-6 text-sm items-center">
-            <Link href="/#projects" className="hover:underline">
+          <div className="flex gap-3 sm:gap-6 text-xs sm:text-sm items-center">
+            <Link
+              href="/#projects"
+              className="hover:underline hidden sm:inline"
+            >
               projects
             </Link>
-            <Link href="/#about" className="hover:underline">
+            <Link href="/#about" className="hover:underline hidden sm:inline">
               about
             </Link>
-            <Link href="/#contact" className="hover:underline">
+            <Link href="/#contact" className="hover:underline hidden sm:inline">
               contact
             </Link>
             <Link href="/you-should-really-watch" className="hover:underline">
@@ -123,11 +126,11 @@ export default function YouShouldReallyWatch() {
         </nav>
       </header>
 
-      <section className="max-w-5xl mx-auto px-6 py-16 flex-grow w-full">
+      <section className="max-w-5xl mx-auto px-6 py-8 sm:py-16 flex-grow w-full">
         <div className="space-y-6">
           {/* Dynamic Title */}
           <div className="space-y-2">
-            <h1 className="text-2xl font-semibold flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-semibold flex flex-wrap items-center gap-2">
               <span>You Should Really</span>
               <div className="relative inline-block">
                 <button
@@ -138,7 +141,7 @@ export default function YouShouldReallyWatch() {
                     {selectedCategory}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${
                       isDropdownOpen ? "rotate-180" : ""
                     }`}
                   />

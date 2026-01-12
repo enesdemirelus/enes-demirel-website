@@ -278,13 +278,13 @@ function page() {
               <span>enesdemirel</span>
             </Link>
             <div className="flex gap-6 text-sm items-center">
-              <Link href="/#projects" className="hover:underline">
+              <Link href="/#projects" className="hover:underline hidden sm:inline">
                 projects
               </Link>
-              <Link href="/#about" className="hover:underline">
+              <Link href="/#about" className="hover:underline hidden sm:inline">
                 about
               </Link>
-              <Link href="/#contact" className="hover:underline">
+              <Link href="/#contact" className="hover:underline hidden sm:inline">
                 contact
               </Link>
               <Link href="/you-should-really-watch" className="hover:underline">
@@ -359,14 +359,17 @@ function page() {
             <span>enesdemirel</span>
           </Link>
           <div className="flex gap-6 text-sm items-center">
-            <Link href="/#projects" className="hover:underline">
+            <Link href="/#projects" className="hover:underline hidden sm:inline">
               projects
             </Link>
-            <Link href="/#about" className="hover:underline">
+            <Link href="/#about" className="hover:underline hidden sm:inline">
               about
             </Link>
-            <Link href="/#contact" className="hover:underline">
+            <Link href="/#contact" className="hover:underline hidden sm:inline">
               contact
+            </Link>
+            <Link href="/you-should-really-watch" className="hover:underline">
+              YSRW
             </Link>
             <ModeToggle />
           </div>
