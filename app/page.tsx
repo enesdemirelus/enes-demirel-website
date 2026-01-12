@@ -30,7 +30,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <link rel="preload" as="image" href="/gs.avif" />
       <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <header className="border-b">
@@ -72,7 +71,7 @@ export default function Home() {
               hey, i'm enes 👋
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
-              I like building things, exploring math, and working hard.
+              I like building things and exploring math.
             </p>
           </div>
 
@@ -566,28 +565,30 @@ export default function Home() {
         </div>
       </footer>
 
-      {isModalOpen && (
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-black/50 transition-opacity duration-300 ${
+          isModalOpen
+            ? "opacity-100 visible pointer-events-auto"
+            : "opacity-0 invisible pointer-events-none"
+        }`}
+        onClick={() => setIsModalOpen(false)}
+      >
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-black/50"
-          onClick={() => setIsModalOpen(false)}
+          className="relative max-w-4xl max-h-[90vh]"
+          onClick={(e) => e.stopPropagation()}
         >
-          <div
-            className="relative max-w-4xl max-h-[90vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Image
-              src="/gs.avif"
-              alt="Soccer"
-              width={1200}
-              height={800}
-              className="rounded-lg object-contain max-h-[90vh]"
-              priority
-              loading="eager"
-              quality={85}
-            />
-          </div>
+          <Image
+            src="/gs.avif"
+            alt="Soccer"
+            width={1200}
+            height={800}
+            className="rounded-lg object-contain max-h-[90vh]"
+            priority
+            loading="eager"
+            quality={85}
+          />
         </div>
-      )}
+      </div>
     </div>
   );
 }
