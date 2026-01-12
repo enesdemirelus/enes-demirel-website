@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Terminal, ChevronDown } from "lucide-react";
+import { Terminal, ChevronDown, Star } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 
 type Category = "Watch" | "Read" | "Listen" | "Play" | "Watch - Subscribe";
 
 interface Item {
   title: string;
-  description: string;
+  rating?: number;
+  description?: string;
+  artist?: string;
   link?: string;
 }
 
@@ -17,38 +19,65 @@ const items: Record<Category, Item[]> = {
   Watch: [
     {
       title: "Interstellar",
-      description: "A mind-bending journey through space and time",
+      rating: 5,
       link: "https://www.imdb.com/title/tt0816692/",
+    },
+    {
+      title: "Pantheon",
+      rating: 5,
+      link: "https://www.imdb.com/title/tt11680642/?ref_=fn_t_1/",
     },
   ],
   Read: [
     {
       title: "Project Hail Mary",
-      description: "A brilliant sci-fi adventure about saving humanity",
+      rating: 5,
       link: "https://www.goodreads.com/book/show/54493401-project-hail-mary",
     },
   ],
   Listen: [
     {
       title: "Welcome to the Machine",
-      description: "Pink Floyd",
+      artist: "Pink Floyd",
       link: "https://www.youtube.com/watch?v=lt-udg9zQSE",
     },
   ],
   Play: [
     {
       title: "Stray",
-      description: "A beautiful adventure game about a cat",
+      rating: 5,
       link: "https://store.steampowered.com/app/1332010/Stray/",
     },
   ],
   "Watch - Subscribe": [
     {
+      title: "Enes Demirel",
+      description: "me 👋🏻",
+      link: "https://www.youtube.com/@demirelnes",
+    },
+    {
       title: "3Blue1Brown",
-      description: "Math education through stunning visualizations",
+      description: "Best math channel on Youtube with stunning visualizations",
       link: "https://www.youtube.com/@3blue1brown",
     },
   ],
+};
+
+const StarRating = ({ rating }: { rating: number }) => {
+  return (
+    <span className="inline-flex items-center gap-0.5">
+      {[...Array(5)].map((_, index) => (
+        <Star
+          key={index}
+          className={`w-4 h-4 ${
+            index < rating
+              ? "fill-foreground text-foreground"
+              : "fill-none text-foreground/20"
+          }`}
+        />
+      ))}
+    </span>
+  );
 };
 
 export default function YouShouldReallyWatch() {
@@ -149,7 +178,7 @@ export default function YouShouldReallyWatch() {
           {/* Simple Bullet List */}
           <ul className="list-disc list-inside space-y-2 text-foreground/80">
             {items[selectedCategory].map((item, index) => (
-              <li key={index}>
+              <li key={index} className="flex items-center gap-2">
                 <a
                   href={item.link}
                   target="_blank"
@@ -158,7 +187,25 @@ export default function YouShouldReallyWatch() {
                 >
                   {item.title}
                 </a>
-                : {item.description}
+                {item.artist && (
+                  <span className="text-sm text-muted-foreground">
+                    {item.artist}
+                  </span>
+                )}
+                {item.rating && (
+                  <>
+                    <span>:</span>
+                    <StarRating rating={item.rating} />
+                  </>
+                )}
+                {item.description && (
+                  <>
+                    <span>:</span>
+                    <span className="text-xs text-muted-foreground">
+                      {item.description}
+                    </span>
+                  </>
+                )}
               </li>
             ))}
           </ul>
