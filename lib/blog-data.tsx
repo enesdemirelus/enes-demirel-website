@@ -28,11 +28,17 @@ export const blogPosts: BlogPost[] = [
                     <p>Did you know that all possible arangements of a 52 deck cards is greater than the number of atoms in the solar system?</p>
                     <p style={{ fontWeight: "bold" }}>Explanation:</p>
                     <p>We first need to calculate the total number of permutations of a 52 deck cards. This can be done with calculating how many ways we can arrange 52 distinct cards:</p>
-                    <BlockMath math="\begin{aligned} &\text{There are 52 choices for the first card.} \\ &\text{There are 51 choices for the second card.} \\ &\vdots \\ &\text{There is 1 choice for the 52nd card.} \end{aligned}" />
+                    <div className="border rounded-lg p-4 my-4 bg-muted/50 overflow-x-auto">
+                        <BlockMath math="\begin{aligned} &\text{There are 52 choices for the first card.} \\ &\text{There are 51 choices for the second card.} \\ &\vdots \\ &\text{There is 1 choice for the 52nd card.} \end{aligned}" />
+                    </div>
                     <p>By the <a href="https://www.amazon.com/Inquiry-Based-Enumerative-Combinatorics-Ninety-Nine-Undergraduate/dp/3030183106" target="_blank" rel="noopener noreferrer" className="underline decoration-2 hover:opacity-70 transition-opacity">product principle</a>, the total number of permutations is:</p>
-                    <BlockMath math="52 \times 51 \times \cdots \times 1 = 52! ≈ 10^{67}" />
+                    <div className="border rounded-lg p-4 my-4 bg-muted/50 overflow-x-auto">
+                        <BlockMath math="52 \times 51 \times \cdots \times 1 = 52! ≈ 10^{67}" />
+                    </div>
                     <p>The number of atoms in the solar system is estimated to be around <InlineMath math="10^{50}" />.</p>
-                    <BlockMath math="52! > 10^{50}" />
+                    <div className="border rounded-lg p-4 my-4 bg-muted/50 overflow-x-auto">
+                        <BlockMath math="52! > 10^{50}" />
+                    </div>
                     <p>Therefore, the number of permutations of a 52 deck cards is greater than the number of atoms in the solar system.</p>
                     
 

@@ -52,7 +52,7 @@ export default function Home() {
             <a href="#contact" className="hover:underline hidden sm:inline">
               contact
             </a>
-            <Link href="/blog" className="hover:underline hidden sm:inline">
+            <Link href="/blog" className="hover:underline">
               blog
             </Link>
             <ModeToggle />

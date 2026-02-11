@@ -178,3 +178,34 @@
 .blog-content a {
   text-decoration: underline;
 }
+
+/* KaTeX math rendering styles */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center !important;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+.katex {
+  font-size: 1.1em;
+}
+
+/* Responsive KaTeX styles for mobile */
+@media (max-width: 640px) {
+  .katex {
+    font-size: 0.9em;
+  }
+  
+  .katex-display {
+    font-size: 0.85em;
+    max-width: 100%;
+  }
+  
+  .katex-display > .katex {
+    max-width: 100%;
+    overflow-x: auto;
+    display: inline-block;
+  }
+}
