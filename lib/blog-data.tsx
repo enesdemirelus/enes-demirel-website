@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
           <BlockMath math="2^{32} - 1 = 4,294,967,295" />
           </div>
           <p>
-          However, computers need to store negative numbers as well. So, computer scientists in the 1960s came up with a solution. Using the most significant bit to store the sign. If it is 0, that is a positive number; if it is 1, that is a negative number. This is called a 32-bit signed integer.
+          However, computers need to store negative numbers as well. So, computer scientists in the 1960s came up with a solution. Using the most significant bit to store the sign. If it is 0, that is a positive number; if it is 1, that is a negative number. This is called a 32-bit signed integer. To be able to read a negative number, you have to invert all the bits and add 1.
           </p>
           <p style={{ fontWeight: "bold" }}>
           Example:
