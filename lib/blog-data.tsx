@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "interesting-fact-of-the-day",
     title: "interesting fact of the day",
-    excerpt: "They are all researched and written by me.",
+    excerpt: "",
     date: "2026-02-11",
     readTime: "1 min",
     emoji: "🤔",
