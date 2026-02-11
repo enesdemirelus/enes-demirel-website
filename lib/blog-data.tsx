@@ -138,6 +138,22 @@ export const blogPosts: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "my-first-blog-post",
+    title: "my first blog post",
+    excerpt: "This is only to try the code..",
+    date: "2026-02-10",
+    readTime: "1 min",
+    emoji: "👋",
+    pinned: false,
+    content: () => (
+      <>
+      <div className="">
+        <p>Hi!</p>
+      </div>
+      </>
+    ),
+  }
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
