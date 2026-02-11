@@ -51,7 +51,7 @@ export default function Blog() {
           <div>
             <h1 className="text-4xl font-bold mb-4">blog</h1>
             <p className="text-muted-foreground">
-              thoughts on tech, learning, and building things
+              thoughts on tech, math, and life.
             </p>
           </div>
 

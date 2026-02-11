@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     {
         slug: "interesting-fact-of-the-day",
         title: "interesting fact of the day",
-        excerpt: "An interesting fact everyday",
+        excerpt: "An interesting fact for a given day",
         date: "2026-02-11",
         readTime: "1 min",
         emoji: "🤔",
@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
                     <div className="border rounded-lg p-4 my-4 bg-muted/50 overflow-x-auto">
                         <BlockMath math="\begin{aligned} &\text{There are 52 choices for the first card.} \\ &\text{There are 51 choices for the second card.} \\ &\vdots \\ &\text{There is 1 choice for the 52nd card.} \end{aligned}" />
                     </div>
-                    <p>By the <a href="https://www.amazon.com/Inquiry-Based-Enumerative-Combinatorics-Ninety-Nine-Undergraduate/dp/3030183106" target="_blank" rel="noopener noreferrer" className="underline decoration-2 hover:opacity-70 transition-opacity">product principle</a>, the total number of permutations is:</p>
+                    <p>By the <a href="https://en.wikipedia.org/wiki/Rule_of_product" target="_blank" rel="noopener noreferrer" className="underline decoration-2 hover:opacity-70 transition-opacity">product principle</a>, the total number of permutations is:</p>
                     <div className="border rounded-lg p-4 my-4 bg-muted/50 overflow-x-auto">
                         <BlockMath math="52 \times 51 \times \cdots \times 1 = 52! ≈ 10^{67}" />
                     </div>
