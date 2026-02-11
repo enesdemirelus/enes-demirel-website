@@ -18,12 +18,17 @@ interface Item {
 const items: Record<Category, Item[]> = {
   Watch: [
     {
-      title: "Interstellar",
+      title: "Person Of Intenrest",
+      rating: 5,
+      link: "https://www.imdb.com/title/tt1839578/",
+    },
+    {
+      title: "Interstellar (Movie)",
       rating: 5,
       link: "https://www.imdb.com/title/tt0816692/",
     },
     {
-      title: "Pantheon",
+      title: "Pantheon (TV Series)",
       rating: 5,
       link: "https://www.imdb.com/title/tt11680642/?ref_=fn_t_1/",
     },

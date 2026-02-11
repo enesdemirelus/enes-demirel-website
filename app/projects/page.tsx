@@ -246,8 +246,8 @@ export default function Projects() {
             <Link href="/#contact" className="hover:underline hidden sm:inline">
               contact
             </Link>
-            <Link href="/you-should-really-watch" className="hover:underline">
-              YSRW
+            <Link href="/blog" className="hover:underline hidden sm:inline">
+              blog
             </Link>
             <ModeToggle />
           </div>

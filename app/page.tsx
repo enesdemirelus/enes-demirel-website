@@ -27,6 +27,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showExperience, setShowExperience] = useState(true);
 
   return (
     <div className="min-h-screen">
@@ -51,8 +52,8 @@ export default function Home() {
             <a href="#contact" className="hover:underline hidden sm:inline">
               contact
             </a>
-            <Link href="/you-should-really-watch" className="hover:underline">
-              YSRW
+            <Link href="/blog" className="hover:underline hidden sm:inline">
+              blog
             </Link>
             <ModeToggle />
           </div>
@@ -289,10 +290,11 @@ export default function Home() {
               <h2 className="text-2xl font-bold mb-4">about me</h2>
               <div className="prose prose-neutral space-y-4 text-muted-foreground">
                 <p>
-                  Hi, my name is Enes. I am 22 years old and living in Chicago,
-                  IL. I am currently studying Math and Computer Science at
-                  DePaul University. I am interested in Machine Learning,
-                  Artificial Intelligence, Software Development, and Math.
+                  Merhaba (Hi) 👋🏻 , my name is Enes. I am 22 years old and
+                  living in Chicago, IL. I am currently studying Math and
+                  Computer Science at DePaul University. I am interested in
+                  Machine Learning, Artificial Intelligence, Software
+                  Development, and Math.
                 </p>
                 <p>
                   As far as I can remember, I have always been interested in
@@ -309,104 +311,213 @@ export default function Home() {
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-semibold">experience</h3>
+              <div className="relative inline-flex items-center bg-muted rounded-lg p-1 gap-1">
+                <button
+                  onClick={() => setShowExperience(true)}
+                  className={`relative z-10 px-4 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 ${
+                    showExperience
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  experience
+                </button>
+                <button
+                  onClick={() => setShowExperience(false)}
+                  className={`relative z-10 px-4 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 ${
+                    !showExperience
+                      ? "text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  education
+                </button>
+                <div
+                  className={`absolute top-1 h-[calc(100%-8px)] bg-primary rounded-md transition-all duration-300 ease-out ${
+                    showExperience
+                      ? "left-1 w-[calc(50%-4px)]"
+                      : "left-[calc(50%+2px)] w-[calc(50%-4px)]"
+                  }`}
+                />
+              </div>
 
-              <Card className="gap-0">
-                <CardHeader className="pb-0">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-base">
-                        Software Developer Intern
-                      </CardTitle>
-                      <CardDescription>Airblox</CardDescription>
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      June 2025 - Present
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-1">
-                  <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                    <li>
-                      Recreated UI components from the Figma design system as
-                      reusable React components in a Storybook-driven codebase
-                      using pnpm.
-                    </li>
-                    <li>
-                      Matched each component's visuals and behavior to the
-                      design specs and backend requirements, fixing issues found
-                      during manual checks and sprint reviews.
-                    </li>
-                    <li>
-                      Used Git and GitLab in a two-week sprint process to
-                      address code review feedback, resolve merge conflicts, and
-                      ship changes with the team via Jira and Slack.
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+              {showExperience ? (
+                <>
+                  <Card className="gap-0">
+                    <CardHeader className="pb-0">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-base">
+                            Software Developer Intern
+                          </CardTitle>
+                          <CardDescription><a href="https://www.airblox.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Airblox</a></CardDescription>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          June 2025 - Present
+                        </span>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-1">
+                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                        <li>
+                          Recreated UI components from the Figma design system
+                          as reusable React components in a Storybook-driven
+                          codebase using pnpm.
+                        </li>
+                        <li>
+                          Matched each component's visuals and behavior to the
+                          design specs and backend requirements, fixing issues
+                          found during manual checks and sprint reviews.
+                        </li>
+                        <li>
+                          Used Git and GitLab in a two-week sprint process to
+                          address code review feedback, resolve merge conflicts,
+                          and ship changes with the team via Jira and Slack.
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
 
-              <Card className="gap-0">
-                <CardHeader className="pb-0">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-base">
-                        Undergraduate Research Assistant
-                      </CardTitle>
-                      <CardDescription>
-                        DePaul University, College of Science and Health
-                      </CardDescription>
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      Jan. 2025 - Present
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-1">
-                  <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                    <li>
-                      Modeled a Crab Nebula–inspired signal by rotating
-                      synthetic 2D point clouds and optimizing a kernel-based
-                      objective;
-                    </li>
-                    <li>
-                      Implemented angle estimation via bisection and built an
-                      interactive matplotlib slider to explore angle dependence.
-                    </li>
-                    <li>
-                      Implemented and tested an AGD-Until-Guilty method (JAX) to
-                      certify convexity and surface counterexamples via witness
-                      pairs; evaluated behavior on convex and non-convex
-                      functions.
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  <Card className="gap-0">
+                    <CardHeader className="pb-0">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-base">
+                            Undergraduate Research Assistant
+                          </CardTitle>
+                          <CardDescription>
+                            <a href="https://www.depaul.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">DePaul University</a>, 
+                            <a href="https://csh.depaul.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">College of Science and Health</a>
+                          </CardDescription>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          Jan. 2025 - Present
+                        </span>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-1">
+                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                        <li>
+                          Modeled a Crab Nebula–inspired signal by rotating
+                          synthetic 2D point clouds and optimizing a
+                          kernel-based objective;
+                        </li>
+                        <li>
+                          Implemented angle estimation via bisection and built
+                          an interactive matplotlib slider to explore angle
+                          dependence.
+                        </li>
+                        <li>
+                          Implemented and tested an AGD-Until-Guilty method
+                          (JAX) to certify convexity and surface counterexamples
+                          via witness pairs; evaluated behavior on convex and
+                          non-convex functions.
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
 
-              <Card className="gap-0">
-                <CardHeader className="pb-0">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-base">Grader</CardTitle>
-                      <CardDescription>
-                        DePaul University, College of Computing and Digital
-                        Media
-                      </CardDescription>
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      Apr. 2025 - June 2025
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent className="pt-1">
-                  <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                    <li>
-                      Graded assignments for 90+ Data Structures students and
-                      coordinated with professors to keep grading consistent.
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+                  <Card className="gap-0">
+                    <CardHeader className="pb-0">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-base">Grader</CardTitle>
+                          <CardDescription>
+                            <a href="https://www.depaul.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">DePaul University</a>, 
+                            <a href="https://cdm.depaul.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">College of Computing and Digital Media</a>
+                          </CardDescription>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          Apr. 2025 - June 2025
+                        </span>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-1">
+                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                        <li>
+                          Graded assignments for 90+ Data Structures students
+                          and coordinated with professors to keep grading
+                          consistent.
+                        </li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </>
+              ) : (
+                <>
+                  <Card className="gap-0">
+                    <CardHeader className="pb-0">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-base">
+                          B.S. in Mathematics and Computer Science
+                          </CardTitle>
+                          <CardDescription>
+                            <a href="https://www.depaul.edu/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">DePaul University</a>
+                          </CardDescription>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          Sep. 2023 - June 2027
+                        </span>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-1">
+                      <div className="space-y-3 text-sm text-muted-foreground">
+                        <div className="flex gap-2">
+                          <span className="font-medium text-foreground">GPA:</span>
+                          <span>3.87 Overall • 3.95 Major</span>
+                        </div>
+                        
+                        <div>
+                          <p className="font-medium text-foreground mb-2">Relevant Coursework</p>
+                          <div className="space-y-2 pl-4 border-l-2 border-muted">
+                            <div>
+                              <p className="font-medium text-foreground/80 mb-1">Mathematics</p>
+                              <p className="text-xs leading-relaxed">
+                                Calculus I, II, III, Discrete Mathematics I, II, Linear Algebra, Multivariable Calculus, Probability & Statistics, Optimization Theory, Combinatorics, Graph Theory
+                              </p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground/80 mb-1">Computer Science</p>
+                              <p className="text-xs leading-relaxed">
+                                Intro to Computer Science I, II, Data Structures I, II, Web Computing, Ethics in Technology, Design & Analysis of Algorithms, Object-Oriented Software Development, Computer Systems I, II
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex gap-2">
+                          <span className="font-medium text-foreground">Extracurricular:</span>
+                          <span>Treasurer of Turkish Student Association & DePaul AI Club</span>
+                        </div>
+                        
+                        <div className="flex gap-2">
+                          <span className="font-medium text-foreground">Dean's List:</span>
+                          <span>Every Quarter</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="gap-0">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-base">
+                            High School 
+                          </CardTitle>
+                          <CardDescription>
+                            <a href="https://formkampuskoleji.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">Private Form Kampus Anatolian High School</a>
+                          </CardDescription>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          Sep. 2018 - June 2022
+                        </span>
+                      </div>
+                    </CardHeader>
+                  </Card>
+                </>
+              )}
             </div>
           </div>
 
@@ -479,8 +590,7 @@ export default function Home() {
                 <div className="flex items-center gap-2">
                   <Code2 className="w-4 h-4" />
                   <span>
-                    probably watching person of interest or grinding a leetcode
-                    problem.
+                    probably watching person of interest or trying to learn vim.
                   </span>
                 </div>
                 <div className="flex items-center gap-2">

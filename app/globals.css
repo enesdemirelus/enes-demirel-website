@@ -125,3 +125,56 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Blog content styles */
+.blog-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content h2:first-child {
+  margin-top: 0;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.blog-content pre {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.blog-content code {
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+.blog-content a {
+  text-decoration: underline;
+}
