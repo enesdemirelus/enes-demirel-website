@@ -24,6 +24,7 @@ import {
 import Image from "next/image";
 
 import { ModeToggle } from "@/components/mode-toggle";
+import { TerminalDemo } from "@/components/terminal-demo";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -103,62 +104,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Card className="mt-12 bg-muted/50 border-dashed">
-          <CardContent className="px-4 py-3 font-mono text-sm">
-            <div className="space-y-2">
-              <p className="text-foreground">
-                <span className="text-primary">guest</span>
-                <span>:</span>
-                <span className="text-primary">~</span>
-                <span>$</span>
-                <span className="text-muted-foreground"> whoami</span>
-              </p>
-              <div className="text-muted-foreground space-y-0.5 pl-0">
-                <p>&gt; name: enes</p>
-                <p>
-                  &gt; studying: math & cs @{" "}
-                  <a
-                    href="https://www.depaul.edu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-primary/50 hover:decoration-primary underline-offset-2 transition-colors"
-                  >
-                    depaul university
-                  </a>
-                </p>
-                <p>
-                  &gt; working: swe intern @{" "}
-                  <a
-                    href="https://www.airblox.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-primary/50 hover:decoration-primary underline-offset-2 transition-colors"
-                  >
-                    airblox
-                  </a>
-                </p>
-                <p>&gt; location: chicago, il</p>
-                <p>
-                  &gt; interests: math, ml, coding,{" "}
-                  <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="underline decoration-primary/50 hover:decoration-primary underline-offset-2 transition-colors cursor-pointer"
-                  >
-                    soccer
-                  </button>
-                  , f1{" "}
-                </p>
-              </div>
-              <p className="text-foreground">
-                <span className="text-primary">guest</span>
-                <span>:</span>
-                <span className="text-primary">~</span>
-                <span>$</span>
-                <span className="animate-pulse">_</span>
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+        <TerminalDemo onFootballClick={() => setIsModalOpen(true)} />
       </section>
 
       <section id="projects" className="max-w-5xl mx-auto px-6 py-8">
@@ -304,7 +250,7 @@ export default function Home() {
                   software engineer as well.
                 </p>
                 <p>
-                  Outside of coding, I like to play soccer, play FIFA, watch F1,
+                  Outside of coding, I like to play football, play FIFA, watch F1,
                   and enjoy some other sports.
                 </p>
               </div>
@@ -689,7 +635,7 @@ export default function Home() {
         >
           <Image
             src="/gs.avif"
-            alt="Soccer"
+            alt="Football"
             width={1200}
             height={800}
             className="rounded-lg object-contain max-h-[90vh]"
