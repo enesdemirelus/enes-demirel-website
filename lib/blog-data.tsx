@@ -24,6 +24,16 @@ export const blogPosts: BlogPost[] = [
     pinned: true,
     content: () => (
       <>
+
+<div className="border rounded-lg px-6 py-4 mb-6 bg-muted/30">
+          <h2 style={{ marginTop: 0 }}>February 21, 2026</h2>
+          <p>
+            Did you know that, in 2008, Steve Jobs noticed that the Google logo displayed as an icon on the original iPhone did not match Google's official brand colors, spesifically the yellow in the second "o." He contacted Google to point out the issue. After reviewing the logo, Google changed the color to match the official brand colors. The change was only visible on the iPhone, and not on other devices.
+          </p>
+
+
+        </div>
+
         <div className="border rounded-lg px-6 py-4 mb-6 bg-muted/30">
           <h2 style={{ marginTop: 0 }}>February 12, 2026</h2>
           <p>
