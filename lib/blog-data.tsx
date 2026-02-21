@@ -14,10 +14,10 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "interesting-fact-of-the-day",
-    title: "interesting fact of the day",
+    slug: "interesting-facts",
+    title: "interesting facts",
     excerpt:
-      "These are all researched and written by me. So, there is a possibility that I made a mistake. Please either ignore it or let me know.",
+      "I’ll share all the interesting facts I read about science, math, sports, and computer science here. Some of them might be incorrect or contain mathematical errors, as they are researched and written by me.",
     date: "2026-02-11",
     readTime: "1 min",
     emoji: "🤔",
