@@ -25,7 +25,7 @@ import Image from "next/image";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { TerminalDemo } from "@/components/terminal-demo";
-
+import { HackathonTimeline } from "@/components/hackathon-timeline";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showExperience, setShowExperience] = useState(true);
@@ -546,6 +546,13 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      <section id="hackathons" className="max-w-5xl mx-auto px-6 py-4">
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold mb-1">hackathons</h2>
+          <HackathonTimeline />
         </div>
       </section>
 
