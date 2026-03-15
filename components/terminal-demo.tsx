@@ -35,7 +35,7 @@ export function TerminalDemo({ onFootballClick }: TerminalDemoProps) {
 
       <AnimatedSpan className="text-muted-foreground" delay={900}>
         <span>
-          &gt; working: swe intern @{" "}
+          &gt; last work (9 months): swe intern @{" "}
           <a
             href="https://www.airblox.com/"
             target="_blank"
@@ -74,4 +74,3 @@ export function TerminalDemo({ onFootballClick }: TerminalDemoProps) {
     </Terminal>
   );
 }
-
