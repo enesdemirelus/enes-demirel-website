@@ -24,6 +24,11 @@ const projectLinks: Record<
     githubRepo?: string;
   }
 > = {
+  "nasa-asteroid-classifier": {
+    type: "youtube",
+    value: "TODO",
+    githubRepo: "https://github.com/enesdemirelus/nasa-asteroid-classifier",
+  },
   occasion: {
     type: "youtube",
     value: "pw8qAaRDEaw",
@@ -74,6 +79,24 @@ const projectLinks: Record<
 };
 
 const projects: Project[] = [
+  {
+    emoji: "☄️",
+    title: "nasa asteroid classifier",
+    description:
+      "binary classifier that predicts whether a near-earth asteroid is hazardous using a keras neural network trained on nasa data. features a fastapi backend and next.js frontend, both deployed on railway.",
+    tags: [
+      "python",
+      "tensorflow",
+      "keras",
+      "fastapi",
+      "next.js",
+      "railway",
+      "scikit-learn",
+      "pandas",
+    ],
+    categories: ["Machine Learning", "Next.js", "React", "Python"],
+    slug: "nasa-asteroid-classifier",
+  },
   {
     emoji: "📆",
     title: "occasion",
@@ -428,7 +451,7 @@ function page() {
                 <div className="flex items-center gap-3">
                   <Github className="w-5 h-5" />
                   <span className="font-mono text-sm">
-                    enesdemirelus/Telegram-Habit-Tracker-Bot
+                    {projectLink.value.replace("https://github.com/", "")}
                   </span>
                 </div>
                 <Button asChild variant="outline" size="sm">
@@ -450,7 +473,7 @@ function page() {
               >
                 <iframe
                   className="w-full h-full"
-                  src="https://github1s.com/enesdemirelus/Telegram-Habit-Tracker-Bot"
+                  src={`https://github1s.com/${projectLink.value.replace("https://github.com/", "")}`}
                   title={projectData.title}
                   style={{ border: "none" }}
                 />

@@ -4,7 +4,11 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import { getBlogPost } from "@/lib/blog-data";
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const post = getBlogPost(slug);
 
@@ -23,13 +27,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               <span>enesdemirel</span>
             </Link>
             <div className="flex gap-6 text-sm items-center">
-              <Link href="/#projects" className="hover:underline hidden sm:inline">
+              <Link
+                href="/#projects"
+                className="hover:underline hidden sm:inline"
+              >
                 projects
               </Link>
               <Link href="/#about" className="hover:underline hidden sm:inline">
                 about
               </Link>
-              <Link href="/#contact" className="hover:underline hidden sm:inline">
+              <Link
+                href="/#contact"
+                className="hover:underline hidden sm:inline"
+              >
                 contact
               </Link>
               <Link href="/blog" className="hover:underline hidden sm:inline">
@@ -40,7 +50,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </nav>
         </header>
 
-        <main className="max-w-3xl mx-auto px-6 py-16 flex-grow">
+        <main className="max-w-3xl mx-auto px-6 py-16 grow">
           <div className="text-center space-y-4">
             <h1 className="text-4xl font-bold">post not found</h1>
             <p className="text-muted-foreground">
@@ -81,7 +91,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             <span>enesdemirel</span>
           </Link>
           <div className="flex gap-6 text-sm items-center">
-            <Link href="/#projects" className="hover:underline hidden sm:inline">
+            <Link
+              href="/#projects"
+              className="hover:underline hidden sm:inline"
+            >
               projects
             </Link>
             <Link href="/#about" className="hover:underline hidden sm:inline">
@@ -98,7 +111,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </nav>
       </header>
 
-      <main className="max-w-3xl mx-auto px-6 py-8 flex-grow w-full">
+      <main className="max-w-3xl mx-auto px-6 py-8 grow w-full">
         <Button variant="ghost" asChild className="mb-8 -ml-4">
           <Link href="/blog">
             <ArrowLeft className="w-4 h-4" />
@@ -128,9 +141,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
         </div>
 
-        <article className="blog-content">
-          {post.content()}
-        </article>
+        <article className="blog-content">{post.content()}</article>
       </main>
 
       <footer className="border-t mt-8">
@@ -163,4 +174,3 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     </div>
   );
 }
-

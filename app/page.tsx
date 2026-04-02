@@ -147,6 +147,34 @@ export default function Home() {
               </Card>
             </Link>
 
+            <Link href="/projects/nasa-asteroid-classifier" className="group">
+              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="text-3xl">☄️</div>
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <CardTitle className="text-xl">nasa asteroid classifier</CardTitle>
+                  <CardDescription className="line-clamp-3">
+                    binary classifier that predicts whether a near-earth
+                    asteroid is hazardous using a keras neural network trained
+                    on nasa data. features a fastapi backend and next.js
+                    frontend, both deployed on railway.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary">python</Badge>
+                    <Badge variant="secondary">tensorflow</Badge>
+                    <Badge variant="secondary">keras</Badge>
+                    <Badge variant="secondary">fastapi</Badge>
+                    <Badge variant="secondary">next.js</Badge>
+                    <Badge variant="secondary">railway</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
             <Link href="/projects/masters-tracker" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
@@ -170,35 +198,6 @@ export default function Home() {
                     <Badge variant="secondary">prisma</Badge>
                     <Badge variant="secondary">postgresql</Badge>
                     <Badge variant="secondary">vercel</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link href="/projects/occasion" className="group">
-              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">📆</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">occasion</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    full-stack event management platform with user
-                    authentication, real-time event creation, category
-                    filtering, and collaborative planning features. built with
-                    modern web technologies and deployed on vercel.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">next.js</Badge>
-                    <Badge variant="secondary">typescript</Badge>
-                    <Badge variant="secondary">shadcn/ui</Badge>
-                    <Badge variant="secondary">prisma</Badge>
-                    <Badge variant="secondary">railway / mySQL</Badge>
-                    <Badge variant="secondary">clerk auth</Badge>
-                    <Badge variant="secondary">tailwind</Badge>
                   </div>
                 </CardContent>
               </Card>

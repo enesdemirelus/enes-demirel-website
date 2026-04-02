@@ -28,6 +28,24 @@ const CATEGORIES = [
 
 const projects: Project[] = [
   {
+    emoji: "☄️",
+    title: "nasa asteroid classifier",
+    description:
+      "binary classifier that predicts whether a near-earth asteroid is hazardous using a keras neural network trained on nasa data. features a fastapi backend and next.js frontend, both deployed on railway.",
+    tags: [
+      "python",
+      "tensorflow",
+      "keras",
+      "fastapi",
+      "next.js",
+      "railway",
+      "scikit-learn",
+      "pandas",
+    ],
+    categories: ["Machine Learning", "Next.js", "React", "Python"],
+    slug: "nasa-asteroid-classifier",
+  },
+  {
     emoji: "📆",
     title: "occasion",
     description:
