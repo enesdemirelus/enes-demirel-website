@@ -63,21 +63,6 @@ const projects: Project[] = [
     slug: "occasion",
   },
   {
-    emoji: "🤖",
-    title: "enes' ml lab",
-    description:
-      "personal machine learning portfolio showcasing various ai/ml projects.",
-    tags: ["python", "tensorflow", "next.js", "keras", "numpy"],
-    categories: [
-      "Machine Learning",
-      "Web Development",
-      "Next.js",
-      "React",
-      "Python",
-    ],
-    slug: "enes-ml-lab",
-  },
-  {
     emoji: "📊",
     title: "masters tracker",
     description:

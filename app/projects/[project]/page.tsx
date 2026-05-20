@@ -26,7 +26,7 @@ const projectLinks: Record<
 > = {
   "nasa-asteroid-classifier": {
     type: "youtube",
-    value: "TODO",
+    value: "6ZqjnTa1Z7k",
     githubRepo: "https://github.com/enesdemirelus/nasa-asteroid-classifier",
   },
   occasion: {
@@ -35,7 +35,6 @@ const projectLinks: Record<
     githubRepo: "https://github.com/enesdemirelus/occasion",
   },
   "masters-tracker": { type: "youtube", value: "aqs_lUsFdGQ" },
-  "enes-ml-lab": { type: "redirect", value: "/enes-ml-lab" },
   "ai-movie-recommender": {
     type: "youtube",
     value: "gcFaCIdtQUY",
@@ -113,21 +112,6 @@ const projects: Project[] = [
     ],
     categories: ["Web Development", "Next.js", "React"],
     slug: "occasion",
-  },
-  {
-    emoji: "🤖",
-    title: "enes' ml lab",
-    description:
-      "personal machine learning portfolio showcasing various ai/ml projects.",
-    tags: ["python", "tensorflow", "next.js", "keras", "numpy"],
-    categories: [
-      "Machine Learning",
-      "Web Development",
-      "Next.js",
-      "React",
-      "Python",
-    ],
-    slug: "enes-ml-lab",
   },
   {
     emoji: "📊",

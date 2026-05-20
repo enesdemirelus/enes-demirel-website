@@ -122,31 +122,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/enes-ml-lab" className="group">
-              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">🤖</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">enes' ml lab</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    personal machine learning portfolio showcasing various ai/ml
-                    projects.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">python</Badge>
-                    <Badge variant="secondary">tensorflow</Badge>
-                    <Badge variant="secondary">next.js</Badge>
-                    <Badge variant="secondary">keras</Badge>
-                    <Badge variant="secondary">numpy</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-
             <Link href="/projects/nasa-asteroid-classifier" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
