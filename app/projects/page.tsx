@@ -28,6 +28,24 @@ const CATEGORIES = [
 
 const projects: Project[] = [
   {
+    emoji: "🕌",
+    title: "kaza namazlarim",
+    description:
+      "a web app for tracking and managing missed (qada) prayers, built with next.js, supabase, and clerk auth.",
+    tags: [
+      "next.js",
+      "react",
+      "typescript",
+      "supabase",
+      "clerk",
+      "tailwindcss",
+      "shadcn",
+      "next-intl",
+    ],
+    categories: ["Next.js", "React"],
+    slug: "kaza-namazlarim",
+  },
+  {
     emoji: "☄️",
     title: "nasa asteroid classifier",
     description:

@@ -178,6 +178,31 @@ export default function Home() {
               </Card>
             </Link>
 
+            <Link href="/projects/kaza-namazlarim" className="group">
+              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="text-3xl">🕌</div>
+                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <CardTitle className="text-xl">kaza namazlarim</CardTitle>
+                  <CardDescription className="line-clamp-3">
+                    a web app for tracking and managing missed (qada) prayers,
+                    built with next.js, supabase, and clerk auth.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary">next.js</Badge>
+                    <Badge variant="secondary">typescript</Badge>
+                    <Badge variant="secondary">supabase</Badge>
+                    <Badge variant="secondary">clerk</Badge>
+                    <Badge variant="secondary">tailwindcss</Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
             <Link href="/projects" className="group">
               <Card className="border-dashed h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>

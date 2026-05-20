@@ -22,6 +22,7 @@ const projectLinks: Record<
     type: "youtube" | "redirect" | "github";
     value: string;
     githubRepo?: string;
+    liveUrl?: string;
   }
 > = {
   "nasa-asteroid-classifier": {
@@ -74,6 +75,12 @@ const projectLinks: Record<
     type: "youtube",
     value: "b5RazIDovmw",
     githubRepo: "https://github.com/enesdemirelus/library_management_system",
+  },
+  "kaza-namazlarim": {
+    type: "youtube",
+    value: "dQw4w9WgXcQ",
+    githubRepo: "https://github.com/enesdemirelus/kaza-namazlarim",
+    liveUrl: "https://kazanamazlarim.com",
   },
 };
 
@@ -255,6 +262,24 @@ const projects: Project[] = [
     categories: ["Python"],
     slug: "library-management-system",
   },
+  {
+    emoji: "🕌",
+    title: "kaza namazlarim",
+    description:
+      "a web app for tracking and managing missed (qada) prayers, built with next.js, supabase, and clerk auth.",
+    tags: [
+      "next.js",
+      "react",
+      "typescript",
+      "supabase",
+      "clerk",
+      "tailwindcss",
+      "shadcn",
+      "next-intl",
+    ],
+    categories: ["Next.js", "React"],
+    slug: "kaza-namazlarim",
+  },
 ];
 
 function page() {
@@ -410,20 +435,35 @@ function page() {
                 />
               </div>
 
-              {projectLink.githubRepo && (
-                <div className="flex items-center justify-center">
-                  <Button asChild variant="outline" size="lg">
-                    <a
-                      href={projectLink.githubRepo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="gap-2"
-                    >
-                      <Github className="w-5 h-5" />
-                      View Source Code on GitHub
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
+              {(projectLink.githubRepo || projectLink.liveUrl) && (
+                <div className="flex items-center justify-center gap-3 flex-wrap">
+                  {projectLink.liveUrl && (
+                    <Button asChild size="lg">
+                      <a
+                        href={projectLink.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="gap-2"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Visit Live Site
+                      </a>
+                    </Button>
+                  )}
+                  {projectLink.githubRepo && (
+                    <Button asChild variant="outline" size="lg">
+                      <a
+                        href={projectLink.githubRepo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="gap-2"
+                      >
+                        <Github className="w-5 h-5" />
+                        View Source Code on GitHub
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
                 </div>
               )}
             </div>
