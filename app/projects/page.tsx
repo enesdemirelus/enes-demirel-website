@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Terminal, ArrowUpRight, Github, Youtube } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useState } from "react";
 
 interface Project {
   emoji: string;
+  logo?: string;
   title: string;
   description: string;
   tags: string[];
@@ -27,6 +29,16 @@ const CATEGORIES = [
 ];
 
 const projects: Project[] = [
+  {
+    emoji: "",
+    logo: "/dai-logo.png",
+    title: "DePaul AI — Official Website",
+    description:
+      "official website of the DePaul AI student organization at DePaul University.",
+    tags: ["next.js", "react", "typescript"],
+    categories: ["Next.js", "React"],
+    slug: "depaul-ai-website",
+  },
   {
     emoji: "🕌",
     title: "kaza namazlarim",
@@ -325,7 +337,17 @@ export default function Projects() {
                   >
                     <div className="border rounded-lg p-4 transition-all hover:border-foreground/40 hover:shadow-md bg-background/50 backdrop-blur-sm h-full flex flex-col">
                       <div className="flex items-start justify-between mb-3">
-                        <div className="text-3xl">{project.emoji}</div>
+                        {project.logo ? (
+                          <Image
+                            src={project.logo}
+                            alt={project.title}
+                            width={36}
+                            height={36}
+                            className="rounded-sm object-contain"
+                          />
+                        ) : (
+                          <div className="text-3xl">{project.emoji}</div>
+                        )}
                         <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>
 

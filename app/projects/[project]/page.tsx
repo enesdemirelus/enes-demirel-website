@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 interface Project {
   emoji: string;
+  logo?: string;
   title: string;
   description: string;
   tags: string[];
@@ -82,9 +83,24 @@ const projectLinks: Record<
     githubRepo: "https://github.com/enesdemirelus/kaza-namazlarim",
     liveUrl: "https://kazanamazlarim.com",
   },
+  "depaul-ai-website": {
+    type: "github",
+    value: "https://github.com/DePaul-AI/depaul-ai-website",
+    liveUrl: "https://depaulai.org/",
+  },
 };
 
 const projects: Project[] = [
+  {
+    emoji: "",
+    logo: "/dai-logo.png",
+    title: "DePaul AI — Official Website",
+    description:
+      "official website of the DePaul AI student organization at DePaul University.",
+    tags: ["next.js", "react", "typescript"],
+    categories: ["Next.js", "React"],
+    slug: "depaul-ai-website",
+  },
   {
     emoji: "☄️",
     title: "nasa asteroid classifier",
@@ -478,17 +494,32 @@ function page() {
                     {projectLink.value.replace("https://github.com/", "")}
                   </span>
                 </div>
-                <Button asChild variant="outline" size="sm">
-                  <a
-                    href={projectLink.value}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gap-2"
-                  >
-                    Open in GitHub
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </Button>
+                <div className="flex items-center gap-2">
+                  {projectLink.liveUrl && (
+                    <Button asChild size="sm">
+                      <a
+                        href={projectLink.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="gap-2"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        Visit Live Site
+                      </a>
+                    </Button>
+                  )}
+                  <Button asChild variant="outline" size="sm">
+                    <a
+                      href={projectLink.value}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="gap-2"
+                    >
+                      Open in GitHub
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </Button>
+                </div>
               </div>
 
               <div
