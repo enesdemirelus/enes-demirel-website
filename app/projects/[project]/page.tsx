@@ -326,13 +326,19 @@ function page() {
               <span>enesdemirel</span>
             </Link>
             <div className="flex gap-6 text-sm items-center">
-              <Link href="/#projects" className="hover:underline hidden sm:inline">
+              <Link
+                href="/#projects"
+                className="hover:underline hidden sm:inline"
+              >
                 projects
               </Link>
               <Link href="/#about" className="hover:underline hidden sm:inline">
                 about
               </Link>
-              <Link href="/#contact" className="hover:underline hidden sm:inline">
+              <Link
+                href="/#contact"
+                className="hover:underline hidden sm:inline"
+              >
                 contact
               </Link>
               <Link href="/blog" className="hover:underline hidden sm:inline">
@@ -407,7 +413,10 @@ function page() {
             <span>enesdemirel</span>
           </Link>
           <div className="flex gap-6 text-sm items-center">
-            <Link href="/#projects" className="hover:underline hidden sm:inline">
+            <Link
+              href="/#projects"
+              className="hover:underline hidden sm:inline"
+            >
               projects
             </Link>
             <Link href="/#about" className="hover:underline hidden sm:inline">
