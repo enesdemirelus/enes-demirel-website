@@ -145,29 +145,27 @@ export default function Home() {
               </Card>
             </Link>
 
-            <Link href="/projects/masters-tracker" className="group">
+            <Link href="/projects/reelduel" className="group">
               <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
                 <CardHeader>
                   <div className="flex items-start justify-between">
-                    <div className="text-3xl">📊</div>
+                    <div className="text-3xl">⚔️</div>
                     <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <CardTitle className="text-xl">masters tracker</CardTitle>
+                  <CardTitle className="text-xl">ReelDuel</CardTitle>
                   <CardDescription className="line-clamp-3">
-                    comprehensive grad school application tracker with database
-                    management, deadline tracking, and program comparison
-                    features. includes password-protected personal tracker and
-                    demo mode for showcasing.
+                    movies battle head-to-head until your group finally picks
+                    what to watch. expo react native app for ios and android,
+                    still in active development.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">next.js 15</Badge>
+                    <Badge variant="secondary">react native</Badge>
+                    <Badge variant="secondary">expo</Badge>
                     <Badge variant="secondary">typescript</Badge>
-                    <Badge variant="secondary">mantine ui</Badge>
-                    <Badge variant="secondary">prisma</Badge>
-                    <Badge variant="secondary">postgresql</Badge>
-                    <Badge variant="secondary">vercel</Badge>
+                    <Badge variant="secondary">firebase</Badge>
+                    <Badge variant="secondary">tmdb api</Badge>
                   </div>
                 </CardContent>
               </Card>

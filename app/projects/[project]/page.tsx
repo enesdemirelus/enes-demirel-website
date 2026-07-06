@@ -88,6 +88,10 @@ const projectLinks: Record<
     value: "https://github.com/DePaul-AI/depaul-ai-website",
     liveUrl: "https://depaulai.org/",
   },
+  reelduel: {
+    type: "github",
+    value: "https://github.com/enesdemirelus/ReelDeel",
+  },
 };
 
 const projects: Project[] = [
@@ -295,6 +299,21 @@ const projects: Project[] = [
     ],
     categories: ["Next.js", "React"],
     slug: "kaza-namazlarim",
+  },
+  {
+    emoji: "⚔️",
+    title: "ReelDuel",
+    description:
+      "expo react native app for ios and android — social movie-picking for group hangouts. host a room, friends join with a code, and movies battle head-to-head in a bracket until one winner remains. no accounts needed, still in active development.",
+    tags: [
+      "react native",
+      "expo",
+      "typescript",
+      "firebase",
+      "tmdb api",
+    ],
+    categories: ["Mobile Development", "React"],
+    slug: "reelduel",
   },
 ];
 
