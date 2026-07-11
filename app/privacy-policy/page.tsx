@@ -91,12 +91,7 @@ export default function PrivacyPolicies() {
               <span>© {new Date().getFullYear()} enes demirel</span>
             </div>
             <p className="font-mono text-xs">
-              <Link
-                href="/you-should-really-watch"
-                className="underline hover:opacity-80"
-              >
-                you should really watch
-              </Link>{" "}
+              you should really watch{" "}
               <a
                 href="https://www.imdb.com/title/tt1839578/"
                 target="_blank"
