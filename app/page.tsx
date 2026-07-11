@@ -15,7 +15,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  Terminal,
   Coffee,
   Code2,
   ArrowUpRight,
@@ -23,44 +22,85 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-import { ModeToggle } from "@/components/mode-toggle";
 import { TerminalDemo } from "@/components/terminal-demo";
 import { HackathonTimeline } from "@/components/hackathon-timeline";
+
+const featuredProjects = [
+  {
+    slug: "nasa-asteroid-classifier",
+    emoji: "☄️",
+    title: "nasa asteroid classifier",
+    description:
+      "binary classifier that predicts whether a near-earth asteroid is hazardous using a keras neural network trained on nasa data. features a fastapi backend and next.js frontend, both deployed on railway.",
+    tags: ["python", "tensorflow", "keras", "fastapi", "next.js", "railway"],
+  },
+  {
+    slug: "reelduel",
+    emoji: "⚔️",
+    title: "ReelDuel",
+    description:
+      "movies battle head-to-head until your group finally picks what to watch. expo react native app for ios and android, still in active development.",
+    tags: ["react native", "expo", "typescript", "firebase", "tmdb api"],
+  },
+  {
+    slug: "kaza-namazlarim",
+    emoji: "🕌",
+    title: "kaza namazlarim",
+    description:
+      "a web app for tracking and managing missed (qada) prayers, built with next.js, supabase, and clerk auth.",
+    tags: ["next.js", "typescript", "supabase", "clerk", "tailwindcss"],
+  },
+];
+
+const experience = [
+  {
+    title: "Software Developer Intern",
+    orgs: [{ name: "Airblox", href: "https://www.airblox.com/" }],
+    period: "Jun. 2025 - Mar. 2026",
+    bullets: [
+      "Recreated UI components from the Figma design system as reusable React components in a Storybook-driven codebase using pnpm.",
+      "Matched each component's visuals and behavior to the design specs and backend requirements, fixing issues found during manual checks and sprint reviews.",
+      "Used Git and GitLab in a two-week sprint process to address code review feedback, resolve merge conflicts, and ship changes with the team via Jira and Slack.",
+    ],
+  },
+  {
+    title: "Undergraduate Research Assistant",
+    orgs: [
+      { name: "DePaul University", href: "https://www.depaul.edu/" },
+      {
+        name: "College of Science and Health",
+        href: "https://csh.depaul.edu/",
+      },
+    ],
+    period: "Jan. 2025 - Nov. 2025",
+    bullets: [
+      "Modeled a Crab Nebula–inspired signal by rotating synthetic 2D point clouds and optimizing a kernel-based objective;",
+      "Implemented angle estimation via bisection and built an interactive matplotlib slider to explore angle dependence.",
+      "Implemented and tested an AGD-Until-Guilty method (JAX) to certify convexity and surface counterexamples via witness pairs; evaluated behavior on convex and non-convex functions.",
+    ],
+  },
+  {
+    title: "Grader",
+    orgs: [
+      { name: "DePaul University", href: "https://www.depaul.edu/" },
+      {
+        name: "College of Computing and Digital Media",
+        href: "https://cdm.depaul.edu/",
+      },
+    ],
+    period: "Apr. 2025 - Jun. 2025",
+    bullets: [
+      "Graded assignments for 90+ Data Structures students and coordinated with professors to keep grading consistent.",
+    ],
+  },
+];
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showExperience, setShowExperience] = useState(true);
 
   return (
-    <div className="min-h-screen">
-      <div className="fixed inset-0 -z-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-      <header className="border-b">
-        <nav className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-mono text-sm hover:opacity-80 transition-opacity"
-          >
-            <Terminal className="w-4 h-4" />
-            <span>enesdemirel</span>
-          </Link>
-          <div className="flex gap-6 text-sm items-center">
-            <a href="#projects" className="hover:underline hidden sm:inline">
-              projects
-            </a>
-            <a href="#about" className="hover:underline hidden sm:inline">
-              about
-            </a>
-            <a href="#contact" className="hover:underline hidden sm:inline">
-              contact
-            </a>
-            <Link href="/blog" className="hover:underline">
-              blog
-            </Link>
-            <ModeToggle />
-          </div>
-        </nav>
-      </header>
-
+    <div className="w-full">
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-8">
         <div className="space-y-6">
           <div className="space-y-4">
@@ -117,84 +157,35 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Link href="/projects/nasa-asteroid-classifier" className="group">
-              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">☄️</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">nasa asteroid classifier</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    binary classifier that predicts whether a near-earth
-                    asteroid is hazardous using a keras neural network trained
-                    on nasa data. features a fastapi backend and next.js
-                    frontend, both deployed on railway.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">python</Badge>
-                    <Badge variant="secondary">tensorflow</Badge>
-                    <Badge variant="secondary">keras</Badge>
-                    <Badge variant="secondary">fastapi</Badge>
-                    <Badge variant="secondary">next.js</Badge>
-                    <Badge variant="secondary">railway</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link href="/projects/reelduel" className="group">
-              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">⚔️</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">ReelDuel</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    movies battle head-to-head until your group finally picks
-                    what to watch. expo react native app for ios and android,
-                    still in active development.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">react native</Badge>
-                    <Badge variant="secondary">expo</Badge>
-                    <Badge variant="secondary">typescript</Badge>
-                    <Badge variant="secondary">firebase</Badge>
-                    <Badge variant="secondary">tmdb api</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            <Link href="/projects/kaza-namazlarim" className="group">
-              <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">🕌</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">kaza namazlarim</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    a web app for tracking and managing missed (qada) prayers,
-                    built with next.js, supabase, and clerk auth.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">next.js</Badge>
-                    <Badge variant="secondary">typescript</Badge>
-                    <Badge variant="secondary">supabase</Badge>
-                    <Badge variant="secondary">clerk</Badge>
-                    <Badge variant="secondary">tailwindcss</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/projects/${project.slug}`}
+                className="group"
+              >
+                <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="text-3xl">{project.emoji}</div>
+                      <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                    <CardDescription className="line-clamp-3">
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
 
             <Link href="/projects" className="group">
               <Card className="border-dashed h-full transition-all hover:shadow-lg hover:border-foreground/20">
@@ -281,144 +272,44 @@ export default function Home() {
 
               {showExperience ? (
                 <>
-                  <Card className="gap-0">
-                    <CardHeader className="pb-0">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-base">
-                            Software Developer Intern
-                          </CardTitle>
-                          <CardDescription>
-                            <a
-                              href="https://www.airblox.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-primary transition-colors"
-                            >
-                              Airblox
-                            </a>
-                          </CardDescription>
+                  {experience.map((job) => (
+                    <Card key={job.title} className="gap-0">
+                      <CardHeader className="pb-0">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <CardTitle className="text-base">
+                              {job.title}
+                            </CardTitle>
+                            <CardDescription>
+                              {job.orgs.map((org, i) => (
+                                <span key={org.name}>
+                                  {i > 0 && ","}
+                                  <a
+                                    href={org.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline hover:text-primary transition-colors"
+                                  >
+                                    {org.name}
+                                  </a>
+                                </span>
+                              ))}
+                            </CardDescription>
+                          </div>
+                          <span className="text-xs text-muted-foreground">
+                            {job.period}
+                          </span>
                         </div>
-                        <span className="text-xs text-muted-foreground">
-                          Jun. 2025 - Mar. 2026
-                        </span>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="pt-1">
-                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                        <li>
-                          Recreated UI components from the Figma design system
-                          as reusable React components in a Storybook-driven
-                          codebase using pnpm.
-                        </li>
-                        <li>
-                          Matched each component's visuals and behavior to the
-                          design specs and backend requirements, fixing issues
-                          found during manual checks and sprint reviews.
-                        </li>
-                        <li>
-                          Used Git and GitLab in a two-week sprint process to
-                          address code review feedback, resolve merge conflicts,
-                          and ship changes with the team via Jira and Slack.
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="gap-0">
-                    <CardHeader className="pb-0">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-base">
-                            Undergraduate Research Assistant
-                          </CardTitle>
-                          <CardDescription>
-                            <a
-                              href="https://www.depaul.edu/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-primary transition-colors"
-                            >
-                              DePaul University
-                            </a>
-                            ,
-                            <a
-                              href="https://csh.depaul.edu/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-primary transition-colors"
-                            >
-                              College of Science and Health
-                            </a>
-                          </CardDescription>
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          Jan. 2025 - Nov. 2025
-                        </span>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="pt-1">
-                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                        <li>
-                          Modeled a Crab Nebula–inspired signal by rotating
-                          synthetic 2D point clouds and optimizing a
-                          kernel-based objective;
-                        </li>
-                        <li>
-                          Implemented angle estimation via bisection and built
-                          an interactive matplotlib slider to explore angle
-                          dependence.
-                        </li>
-                        <li>
-                          Implemented and tested an AGD-Until-Guilty method
-                          (JAX) to certify convexity and surface counterexamples
-                          via witness pairs; evaluated behavior on convex and
-                          non-convex functions.
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="gap-0">
-                    <CardHeader className="pb-0">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <CardTitle className="text-base">Grader</CardTitle>
-                          <CardDescription>
-                            <a
-                              href="https://www.depaul.edu/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-primary transition-colors"
-                            >
-                              DePaul University
-                            </a>
-                            ,
-                            <a
-                              href="https://cdm.depaul.edu/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-primary transition-colors"
-                            >
-                              College of Computing and Digital Media
-                            </a>
-                          </CardDescription>
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          Apr. 2025 - Jun. 2025
-                        </span>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="pt-1">
-                      <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
-                        <li>
-                          Graded assignments for 90+ Data Structures students
-                          and coordinated with professors to keep grading
-                          consistent.
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
+                      </CardHeader>
+                      <CardContent className="pt-1">
+                        <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                          {job.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  ))}
                 </>
               ) : (
                 <>
@@ -505,7 +396,40 @@ export default function Home() {
                   </Card>
 
                   <Card className="gap-0">
-                    <CardHeader>
+                    <CardHeader className="pb-0">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <CardTitle className="text-base">
+                            Summer Visiting Student
+                          </CardTitle>
+                          <CardDescription>
+                            <a
+                              href="https://www.stanford.edu/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline hover:text-primary transition-colors"
+                            >
+                              Stanford University
+                            </a>
+                          </CardDescription>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          Summer 2026
+                        </span>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-1">
+                      <div className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="font-medium text-foreground">
+                          Coursework:
+                        </span>
+                        <span>CS 229: Machine Learning</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="gap-0">
+                    <CardHeader className="pb-0">
                       <div className="flex justify-between items-start">
                         <div>
                           <CardTitle className="text-base">
@@ -527,6 +451,14 @@ export default function Home() {
                         </span>
                       </div>
                     </CardHeader>
+                    <CardContent className="pt-1">
+                      <div className="flex gap-2 text-sm text-muted-foreground">
+                        <span className="font-medium text-foreground">
+                          GPA:
+                        </span>
+                        <span>4.0</span>
+                      </div>
+                    </CardContent>
                   </Card>
                 </>
               )}
@@ -670,29 +602,6 @@ export default function Home() {
           </CardContent>
         </Card>
       </section>
-
-      <footer className="border-t mt-8">
-        <div className="max-w-5xl mx-auto px-6 py-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <Terminal className="w-4 h-4" />
-              <span>© {new Date().getFullYear()} enes demirel</span>
-            </div>
-            <p className="font-mono text-xs">
-              you should really watch{" "}
-              <a
-                href="https://www.imdb.com/title/tt1839578/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:opacity-80"
-              >
-                person of interest
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </footer>
 
       <div
         className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-md bg-black/50 transition-opacity duration-300 ${

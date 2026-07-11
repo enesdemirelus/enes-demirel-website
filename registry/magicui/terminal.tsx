@@ -13,7 +13,7 @@ export function Terminal({ children, className }: TerminalProps) {
     <div
       className={cn(
         "rounded-lg border bg-card text-card-foreground shadow-sm font-mono text-sm",
-        className
+        className,
       )}
     >
       <div className="border-b px-4 py-2 flex items-center gap-2">
@@ -112,11 +112,10 @@ export function AnimatedSpan({
       className={cn(
         "transition-opacity duration-300",
         isVisible ? "opacity-100" : "opacity-0",
-        className
+        className,
       )}
     >
       {children}
     </div>
   );
 }
-

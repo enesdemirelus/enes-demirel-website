@@ -43,8 +43,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -206,12 +204,12 @@
   .katex {
     font-size: 0.9em;
   }
-  
+
   .katex-display {
     font-size: 0.85em;
     max-width: 100%;
   }
-  
+
   .katex-display > .katex {
     max-width: 100%;
     overflow-x: auto;
