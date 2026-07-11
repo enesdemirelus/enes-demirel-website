@@ -1,5 +1,6 @@
 import { isAuthenticated } from "@/lib/admin-auth";
 import { getAllBlogPosts } from "@/lib/blog";
+import { getAllTilEntries } from "@/lib/til";
 import { AdminLogin } from "./admin-login";
 import { AdminDashboard } from "./admin-dashboard";
 
@@ -22,10 +23,11 @@ export default async function AdminPage() {
   }
 
   const posts = getAllBlogPosts();
+  const tilEntries = getAllTilEntries();
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-8 grow w-full">
-      <AdminDashboard posts={posts} />
+      <AdminDashboard posts={posts} tilEntries={tilEntries} />
     </section>
   );
 }

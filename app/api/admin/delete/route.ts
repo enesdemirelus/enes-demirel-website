@@ -17,12 +17,13 @@ export async function POST(request: Request) {
 
   const body = await request.json().catch(() => null);
   const slug = body?.slug;
+  const collection = body?.collection === "til" ? "til" : "blog";
 
   if (typeof slug !== "string" || !/^[a-z0-9-]+$/.test(slug)) {
     return NextResponse.json({ error: "invalid slug" }, { status: 400 });
   }
 
-  const relativePath = `content/blog/${slug}.md`;
+  const relativePath = `content/${collection}/${slug}.md`;
 
   try {
     if (process.env.NODE_ENV === "development") {
@@ -45,9 +46,14 @@ export async function POST(request: Request) {
       if (!existing) {
         return NextResponse.json({ error: "post not found" }, { status: 404 });
       }
-      await deleteFile(relativePath, `blog: delete ${slug}`, existing.sha);
+      await deleteFile(
+        relativePath,
+        `${collection}: delete ${slug}`,
+        existing.sha,
+      );
 
-      const orderMeta = await getFile(ORDER_PATH);
+      const orderMeta =
+        collection === "blog" ? await getFile(ORDER_PATH) : null;
       if (orderMeta) {
         const res = await fetch(
           `https://api.github.com/repos/${process.env.GITHUB_REPO}/contents/${ORDER_PATH}`,

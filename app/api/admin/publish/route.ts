@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import matter from "gray-matter";
 import { verifySession, SESSION_COOKIE } from "@/lib/admin-auth";
 import { getBlogPost } from "@/lib/blog";
+import { getAllTilEntries } from "@/lib/til";
 import { getFile, putFile } from "@/lib/github";
 
 function slugify(title: string): string {
@@ -31,7 +32,17 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => null);
-  const { title, emoji, excerpt, content, pinned, slug: rawSlug } = body ?? {};
+  const {
+    title,
+    emoji,
+    excerpt,
+    content,
+    pinned,
+    slug: rawSlug,
+    collection: rawCollection,
+  } = body ?? {};
+
+  const collection = rawCollection === "til" ? "til" : "blog";
 
   if (typeof title !== "string" || !title.trim()) {
     return NextResponse.json({ error: "title is required" }, { status: 400 });
@@ -45,36 +56,49 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "invalid slug" }, { status: 400 });
   }
 
-  const slug = isEdit ? rawSlug : slugify(title);
-  if (!slug) {
+  let date = new Date().toISOString().slice(0, 10);
+  const slug = isEdit
+    ? rawSlug
+    : collection === "til"
+      ? `${date}-${slugify(title)}`
+      : slugify(title);
+  if (!slug || (!isEdit && !slugify(title))) {
     return NextResponse.json(
       { error: "title produces an empty slug" },
       { status: 400 },
     );
   }
 
-  let date = new Date().toISOString().slice(0, 10);
   if (isEdit) {
-    const existing = getBlogPost(slug);
+    const existing =
+      collection === "til"
+        ? getAllTilEntries().find((e) => e.slug === slug)
+        : getBlogPost(slug);
     if (!existing) {
       return NextResponse.json({ error: "post not found" }, { status: 404 });
     }
     date = existing.date;
   }
 
-  const markdown = matter.stringify(content.trim() + "\n", {
-    title: title.trim(),
-    excerpt: typeof excerpt === "string" ? excerpt.trim() : "",
-    date,
-    readTime: estimateReadTime(content),
-    emoji: typeof emoji === "string" && emoji.trim() ? emoji.trim() : "📝",
-    pinned: pinned === true,
-  });
+  const markdown = matter.stringify(
+    content.trim() + "\n",
+    collection === "til"
+      ? { title: title.trim(), date }
+      : {
+          title: title.trim(),
+          excerpt: typeof excerpt === "string" ? excerpt.trim() : "",
+          date,
+          readTime: estimateReadTime(content),
+          emoji:
+            typeof emoji === "string" && emoji.trim() ? emoji.trim() : "📝",
+          pinned: pinned === true,
+        },
+  );
 
-  const relativePath = `content/blog/${slug}.md`;
+  const relativePath = `content/${collection}/${slug}.md`;
   const message = isEdit
-    ? `blog: update ${title.trim()}`
-    : `blog: ${title.trim()}`;
+    ? `${collection}: update ${title.trim()}`
+    : `${collection}: ${title.trim()}`;
 
   try {
     if (process.env.NODE_ENV === "development") {

@@ -211,6 +211,48 @@
   margin-bottom: 0;
 }
 
+/* TIL accordion styles */
+.til-entry {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: color-mix(in oklab, var(--muted) 30%, transparent);
+  overflow: hidden;
+}
+
+.til-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.15s ease;
+}
+
+.til-summary::-webkit-details-marker {
+  display: none;
+}
+
+.til-summary:hover {
+  background: color-mix(in oklab, var(--muted) 50%, transparent);
+}
+
+.til-chevron {
+  transition: transform 0.2s ease;
+}
+
+.til-entry[open] .til-chevron {
+  transform: rotate(90deg);
+}
+
+.til-entry[open] .til-summary {
+  border-bottom: 1px solid var(--border);
+}
+
+.til-entry .blog-content h2:first-child {
+  margin-top: 1rem;
+}
+
 /* KaTeX math rendering styles */
 .katex-display {
   overflow-x: auto;

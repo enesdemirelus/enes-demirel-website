@@ -1,10 +1,14 @@
 import Link from "next/link";
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
 import { getAllBlogPosts } from "@/lib/blog";
+import { getTilCard } from "@/lib/til";
 import { formatDate } from "@/lib/utils";
 
 export default function Blog() {
-  const posts = getAllBlogPosts();
+  const posts = [getTilCard(), ...getAllBlogPosts()].sort((a, b) => {
+    if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
   return (
     <section className="max-w-5xl mx-auto px-6 py-8 grow w-full">

@@ -14,6 +14,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { BlogMarkdown } from "@/components/blog-markdown";
 import type { BlogPost } from "@/lib/blog";
+import type { TilEntry } from "@/lib/til";
+
+// Kept in sync with TIL_SLUG in @/lib/til (importing the value would pull the
+// fs-using module into the client bundle).
+const TIL_SLUG = "today-i-learned";
 
 const inputClass =
   "w-full px-4 py-2 border rounded-md bg-background/50 focus:outline-none focus:ring-2 focus:ring-primary transition-colors";
@@ -58,21 +63,45 @@ const snippets: Snippet[] = [
   },
 ];
 
+type EditorPost = BlogPost | TilEntry;
+type Mode = "blog" | "til";
+
+const labels = {
+  blog: {
+    noun: "post",
+    plural: "posts",
+    successHref: (slug: string) => `/blog/${slug}`,
+    successLabel: (slug: string) => `/blog/${slug}`,
+  },
+  til: {
+    noun: "fact",
+    plural: "facts",
+    successHref: () => `/blog/${TIL_SLUG}`,
+    successLabel: () => `/blog/${TIL_SLUG}`,
+  },
+} as const;
+
 export function AdminPostEditor({
   post,
+  mode = "blog",
   onBack,
   onSaved,
 }: {
-  post: BlogPost | null;
+  post: EditorPost | null;
+  mode?: Mode;
   onBack: () => void;
   onSaved: () => void;
 }) {
   const isEdit = post !== null;
+  const isTil = mode === "til";
+  const t = labels[mode];
+  const blogPost = !isTil ? (post as BlogPost | null) : null;
+
   const [title, setTitle] = useState(post?.title ?? "");
-  const [emoji, setEmoji] = useState(post?.emoji ?? "");
-  const [excerpt, setExcerpt] = useState(post?.excerpt ?? "");
+  const [emoji, setEmoji] = useState(blogPost?.emoji ?? "");
+  const [excerpt, setExcerpt] = useState(blogPost?.excerpt ?? "");
   const [content, setContent] = useState(post?.content ?? "");
-  const [pinned, setPinned] = useState(post?.pinned ?? false);
+  const [pinned, setPinned] = useState(blogPost?.pinned ?? false);
   const [mobileTab, setMobileTab] = useState<"write" | "preview">("write");
   const [status, setStatus] = useState<
     | { state: "idle" }
@@ -84,10 +113,10 @@ export function AdminPostEditor({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const dirty =
     title !== (post?.title ?? "") ||
-    emoji !== (post?.emoji ?? "") ||
-    excerpt !== (post?.excerpt ?? "") ||
+    emoji !== (blogPost?.emoji ?? "") ||
+    excerpt !== (blogPost?.excerpt ?? "") ||
     content !== (post?.content ?? "") ||
-    pinned !== (post?.pinned ?? false);
+    pinned !== (blogPost?.pinned ?? false);
 
   const insertSnippet = (s: Snippet) => {
     const el = textareaRef.current;
@@ -114,9 +143,10 @@ export function AdminPostEditor({
     e.preventDefault();
     setStatus({ state: "saving" });
 
-    const body = isEdit
-      ? { slug: post.slug, title, emoji, excerpt, content, pinned }
+    const body: Record<string, unknown> = isTil
+      ? { collection: "til", title, content }
       : { title, emoji, excerpt, content, pinned };
+    if (isEdit) body.slug = post.slug;
 
     try {
       const res = await fetch("/api/admin/publish", {
@@ -152,7 +182,7 @@ export function AdminPostEditor({
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          back to posts
+          back to {t.plural}
         </button>
         {dirty && status.state !== "done" && (
           <span className="text-xs font-mono text-muted-foreground">
@@ -163,7 +193,7 @@ export function AdminPostEditor({
 
       <div>
         <h1 className="text-2xl font-bold">
-          {isEdit ? "edit post" : "new post"}
+          {isEdit ? `edit ${t.noun}` : `new ${t.noun}`}
         </h1>
         {isEdit && (
           <p className="mt-1 text-xs font-mono text-muted-foreground">
@@ -174,7 +204,7 @@ export function AdminPostEditor({
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* meta fields */}
-        <div className="flex gap-3">
+        {isTil ? (
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -182,32 +212,44 @@ export function AdminPostEditor({
             className={inputClass}
             required
           />
-          <input
-            value={emoji}
-            onChange={(e) => setEmoji(e.target.value)}
-            placeholder="📝"
-            className={`${inputClass} w-20 text-center`}
-            maxLength={4}
-            aria-label="emoji"
-          />
-        </div>
+        ) : (
+          <>
+            <div className="flex gap-3">
+              <input
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="title"
+                className={inputClass}
+                required
+              />
+              <input
+                value={emoji}
+                onChange={(e) => setEmoji(e.target.value)}
+                placeholder="📝"
+                className={`${inputClass} w-20 text-center`}
+                maxLength={4}
+                aria-label="emoji"
+              />
+            </div>
 
-        <input
-          value={excerpt}
-          onChange={(e) => setExcerpt(e.target.value)}
-          placeholder="excerpt (short summary shown on the blog list)"
-          className={inputClass}
-        />
+            <input
+              value={excerpt}
+              onChange={(e) => setExcerpt(e.target.value)}
+              placeholder="excerpt (short summary shown on the blog list)"
+              className={inputClass}
+            />
 
-        <label className="flex items-center gap-2 text-sm text-muted-foreground w-fit cursor-pointer">
-          <input
-            type="checkbox"
-            checked={pinned}
-            onChange={(e) => setPinned(e.target.checked)}
-            className="accent-primary"
-          />
-          pinned
-        </label>
+            <label className="flex items-center gap-2 text-sm text-muted-foreground w-fit cursor-pointer">
+              <input
+                type="checkbox"
+                checked={pinned}
+                onChange={(e) => setPinned(e.target.checked)}
+                className="accent-primary"
+              />
+              pinned
+            </label>
+          </>
+        )}
 
         {/* toolbar */}
         <div className="flex flex-wrap items-center gap-1.5 rounded-md border bg-background/50 p-1.5">
@@ -227,23 +269,23 @@ export function AdminPostEditor({
 
         {/* mobile tabs */}
         <div className="flex gap-1 rounded-md border bg-background/50 p-1 lg:hidden">
-          {(["write", "preview"] as const).map((t) => (
+          {(["write", "preview"] as const).map((tab) => (
             <button
-              key={t}
+              key={tab}
               type="button"
-              onClick={() => setMobileTab(t)}
+              onClick={() => setMobileTab(tab)}
               className={`flex-1 inline-flex items-center justify-center gap-1.5 rounded px-3 py-1.5 text-sm font-mono transition-colors ${
-                mobileTab === t
+                mobileTab === tab
                   ? "bg-accent text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              {t === "write" ? (
+              {tab === "write" ? (
                 <Pencil className="w-3.5 h-3.5" />
               ) : (
                 <Eye className="w-3.5 h-3.5" />
               )}
-              {t}
+              {tab}
             </button>
           ))}
         </div>
@@ -295,11 +337,11 @@ export function AdminPostEditor({
             <p className="text-sm text-green-600 dark:text-green-500">
               saved —{" "}
               <Link
-                href={`/blog/${status.slug}`}
+                href={t.successHref(status.slug)}
                 className="underline"
                 target="_blank"
               >
-                /blog/{status.slug}
+                {t.successLabel(status.slug)}
               </Link>
             </p>
           )}
