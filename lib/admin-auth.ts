@@ -7,7 +7,9 @@ export const SESSION_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
 function sessionToken(): string | null {
   const password = process.env.ADMIN_PASSWORD;
   if (!password) return null;
-  return createHmac("sha256", password).update("admin-session-v1").digest("hex");
+  return createHmac("sha256", password)
+    .update("admin-session-v1")
+    .digest("hex");
 }
 
 function safeEqual(a: string, b: string): boolean {

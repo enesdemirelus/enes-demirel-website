@@ -3,6 +3,8 @@ import path from "path";
 import { NextResponse } from "next/server";
 import matter from "gray-matter";
 import { verifySession, SESSION_COOKIE } from "@/lib/admin-auth";
+import { getBlogPost } from "@/lib/blog";
+import { getFile, putFile } from "@/lib/github";
 
 function slugify(title: string): string {
   return title
@@ -19,37 +21,6 @@ function estimateReadTime(content: string): string {
   return `${Math.max(1, Math.round(words / 200))} min`;
 }
 
-async function commitToGitHub(filePath: string, markdown: string, title: string) {
-  const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPO; // e.g. "enesdemirelus/enes-demirel-website"
-  if (!token || !repo) {
-    throw new Error("GITHUB_TOKEN or GITHUB_REPO is not configured");
-  }
-
-  const res = await fetch(
-    `https://api.github.com/repos/${repo}/contents/${filePath}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github+json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: `blog: ${title}`,
-        content: Buffer.from(markdown).toString("base64"),
-      }),
-    },
-  );
-
-  if (res.status === 422) {
-    throw new Error("a post with this title already exists");
-  }
-  if (!res.ok) {
-    throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
-  }
-}
-
 export async function POST(request: Request) {
   const cookie = request.headers
     .get("cookie")
@@ -60,7 +31,7 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => null);
-  const { title, emoji, excerpt, content, pinned } = body ?? {};
+  const { title, emoji, excerpt, content, pinned, slug: rawSlug } = body ?? {};
 
   if (typeof title !== "string" || !title.trim()) {
     return NextResponse.json({ error: "title is required" }, { status: 400 });
@@ -69,7 +40,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "content is required" }, { status: 400 });
   }
 
-  const slug = slugify(title);
+  const isEdit = typeof rawSlug === "string" && rawSlug.length > 0;
+  if (isEdit && !/^[a-z0-9-]+$/.test(rawSlug)) {
+    return NextResponse.json({ error: "invalid slug" }, { status: 400 });
+  }
+
+  const slug = isEdit ? rawSlug : slugify(title);
   if (!slug) {
     return NextResponse.json(
       { error: "title produces an empty slug" },
@@ -77,27 +53,52 @@ export async function POST(request: Request) {
     );
   }
 
+  let date = new Date().toISOString().slice(0, 10);
+  if (isEdit) {
+    const existing = getBlogPost(slug);
+    if (!existing) {
+      return NextResponse.json({ error: "post not found" }, { status: 404 });
+    }
+    date = existing.date;
+  }
+
   const markdown = matter.stringify(content.trim() + "\n", {
     title: title.trim(),
     excerpt: typeof excerpt === "string" ? excerpt.trim() : "",
-    date: new Date().toISOString().slice(0, 10),
+    date,
     readTime: estimateReadTime(content),
     emoji: typeof emoji === "string" && emoji.trim() ? emoji.trim() : "📝",
     pinned: pinned === true,
   });
 
   const relativePath = `content/blog/${slug}.md`;
+  const message = isEdit
+    ? `blog: update ${title.trim()}`
+    : `blog: ${title.trim()}`;
 
   try {
     if (process.env.NODE_ENV === "development") {
-      // local dev: write straight to disk, no commit
       const file = path.join(process.cwd(), relativePath);
-      if (fs.existsSync(file)) {
+      const exists = fs.existsSync(file);
+      if (isEdit && !exists) {
+        return NextResponse.json({ error: "post not found" }, { status: 404 });
+      }
+      if (!isEdit && exists) {
         throw new Error("a post with this title already exists");
       }
       fs.writeFileSync(file, markdown);
+    } else if (isEdit) {
+      const existing = await getFile(relativePath);
+      if (!existing) {
+        return NextResponse.json({ error: "post not found" }, { status: 404 });
+      }
+      await putFile(relativePath, markdown, message, existing.sha);
     } else {
-      await commitToGitHub(relativePath, markdown, title.trim());
+      const existing = await getFile(relativePath);
+      if (existing) {
+        throw new Error("a post with this title already exists");
+      }
+      await putFile(relativePath, markdown, message);
     }
   } catch (err) {
     return NextResponse.json(

@@ -1,10 +1,6 @@
 import Link from "next/link";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import rehypeRaw from "rehype-raw";
-import rehypeKatex from "rehype-katex";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { BlogMarkdown } from "@/components/blog-markdown";
 import { Button } from "@/components/ui/button";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
@@ -70,12 +66,7 @@ export default async function BlogPost({
       </div>
 
       <article className="blog-content">
-        <Markdown
-          remarkPlugins={[remarkGfm, remarkMath]}
-          rehypePlugins={[rehypeRaw, rehypeKatex]}
-        >
-          {post.content}
-        </Markdown>
+        <BlogMarkdown>{post.content}</BlogMarkdown>
       </article>
     </main>
   );
