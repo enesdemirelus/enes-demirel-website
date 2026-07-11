@@ -42,11 +42,14 @@ export default function TodayILearned() {
         {entries.map((entry) => (
           <details key={entry.slug} className="til-entry">
             <summary className="til-summary">
-              <ChevronRight className="til-chevron w-4 h-4 flex-shrink-0 text-muted-foreground" />
-              <span className="text-xs font-mono text-muted-foreground flex-shrink-0">
-                {formatDate(entry.date, "long")}
-              </span>
+              <ChevronRight className="til-chevron w-4 h-4 shrink-0 text-muted-foreground" />
               <span className="font-semibold">{entry.title}</span>
+              <span className="ml-auto pl-3 text-[11px] font-mono text-muted-foreground/60 shrink-0">
+                <span className="sm:hidden">{formatDate(entry.date)}</span>
+                <span className="hidden sm:inline">
+                  {formatDate(entry.date, "long")}
+                </span>
+              </span>
             </summary>
             <article className="blog-content px-5 pb-4 pt-4">
               <BlogMarkdown>{entry.content}</BlogMarkdown>
