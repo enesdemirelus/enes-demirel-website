@@ -48,7 +48,7 @@ export default function TodayILearned() {
               </span>
               <span className="font-semibold">{entry.title}</span>
             </summary>
-            <article className="blog-content px-5 pb-4 pt-1">
+            <article className="blog-content px-5 pb-4 pt-4">
               <BlogMarkdown>{entry.content}</BlogMarkdown>
             </article>
           </details>

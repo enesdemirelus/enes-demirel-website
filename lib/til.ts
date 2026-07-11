@@ -16,7 +16,7 @@ export const TIL_META = {
   title: "today I learned...",
   emoji: "🤔",
   excerpt:
-    "I'll share all the interesting facts I read about science, math, sports, and computer science here. Some of them might be incorrect or contain mathematical errors, as they are researched and written by me.",
+    "I'll share all the interesting facts I read about science, math, sports, and computer science here.",
 };
 
 const TIL_DIR = path.join(process.cwd(), "content/til");
