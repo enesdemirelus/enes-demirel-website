@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
-import { getAllBlogPosts } from "@/lib/blog-data";
+import { getAllBlogPosts } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
 
 export default function Blog() {
