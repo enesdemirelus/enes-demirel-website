@@ -1,11 +1,11 @@
-# ReelDuel Privacy Policy
+# Watch Madness Privacy Policy
 
 **Effective date:** 9 July 2026
 **Last updated:** 9 July 2026
 
-ReelDuel is a party app for picking a movie together. This policy explains exactly what the app collects, why, where it goes, and how long it stays.
+Watch Madness is a party app for picking a movie together. This policy explains exactly what the app collects, why, where it goes, and how long it stays.
 
-ReelDuel has no user accounts. You never give us an email address, a phone number, or a password. We do not sell your data, we do not show ads, and the app contains no analytics, tracking, or advertising software of any kind.
+Watch Madness has no user accounts. You never give us an email address, a phone number, or a password. We do not sell your data, we do not show ads, and the app contains no analytics, tracking, or advertising software of any kind.
 
 The controller responsible for the data described here is Enes Demirel, reachable at **demireldeveloper@gmail.com**.
 
@@ -63,7 +63,7 @@ Our legal basis for processing under the GDPR is legitimate interest: the data l
 
 ## Children
 
-ReelDuel is not directed at children under 13, and we do not knowingly collect personal information from them. The app has no accounts, no messaging, and no way to send anything to a stranger — a player must be told a five-character room code by someone to join at all. If you believe a child has provided personal information through the app, email **demireldeveloper@gmail.com** and it will be deleted.
+Watch Madness is not directed at children under 13, and we do not knowingly collect personal information from them. The app has no accounts, no messaging, and no way to send anything to a stranger — a player must be told a five-character room code by someone to join at all. If you believe a child has provided personal information through the app, email **demireldeveloper@gmail.com** and it will be deleted.
 
 ---
 
