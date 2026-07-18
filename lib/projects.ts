@@ -58,13 +58,13 @@ export const projects: Project[] = [
     slug: "kaza-namazlarim",
   },
   {
-    emoji: "⚔️",
-    title: "ReelDuel",
+    emoji: "🍿",
+    title: "PopDuel",
     description:
       "expo react native app for ios and android — social movie-picking for group hangouts. host a room, friends join with a code, and movies battle head-to-head in a bracket until one winner remains. no accounts needed, still in active development.",
     tags: ["react native", "expo", "typescript", "firebase", "tmdb api"],
     categories: ["Mobile Development", "React"],
-    slug: "reelduel",
+    slug: "popduel",
   },
   {
     emoji: "☄️",
@@ -307,7 +307,7 @@ export const projectLinks: Record<string, ProjectLink> = {
     value: "https://github.com/DePaul-AI/depaul-ai-website",
     liveUrl: "https://depaulai.org/",
   },
-  reelduel: {
+  popduel: {
     type: "github",
     value: "https://github.com/enesdemirelus/ReelDeel",
   },
