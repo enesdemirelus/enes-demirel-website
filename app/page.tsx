@@ -35,9 +35,9 @@ const featuredProjects = [
     tags: ["python", "tensorflow", "keras", "fastapi", "next.js", "railway"],
   },
   {
-    slug: "reelduel",
+    slug: "popduel",
     emoji: "⚔️",
-    title: "ReelDuel",
+    title: "PopDuel",
     description:
       "movies battle head-to-head until your group finally picks what to watch. expo react native app for ios and android, still in active development.",
     tags: ["react native", "expo", "typescript", "firebase", "tmdb api"],
