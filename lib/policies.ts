@@ -10,8 +10,8 @@ export type Policy = {
 
 export const policies: Policy[] = [
   {
-    slug: "watch-madness",
-    name: "Watch Madness",
+    slug: "pop-duel",
+    name: "Pop Duel",
     description: "a party app for picking a movie together.",
     icon: "https://placehold.co/128x128/png",
   },
