@@ -31,4 +31,6 @@ This is a very low number for me to read in 3 years. So, I want to start reading
 
 I was always interested in outer space. However, I never thought about going in deep, mostly because I was scared of the astrophysics. However, I want to go deeper on that and learn more. Will rate after I am done.
 
+Update: I kind of started reading this book today (09/20/26). So far, it is really good.
+
 </div>
