@@ -30,6 +30,23 @@ export const CATEGORIES = [
 
 export const projects: Project[] = [
   {
+    emoji: "🟩",
+    title: "Wordle Clone",
+    description:
+      "a wordle clone with a next.js frontend and a fastapi backend that owns the word list, generating and validating 5-letter answers from a filtered common-word dictionary.",
+    tags: [
+      "next.js",
+      "react",
+      "typescript",
+      "python",
+      "fastapi",
+      "tailwind css",
+      "shadcn/ui",
+    ],
+    categories: ["Next.js", "React", "Python"],
+    slug: "wordle-clone",
+  },
+  {
     emoji: "",
     logo: "/dai-logo.png",
     title: "DePaul AI — Official Website",
@@ -246,6 +263,10 @@ export const projects: Project[] = [
 ];
 
 export const projectLinks: Record<string, ProjectLink> = {
+  "wordle-clone": {
+    type: "github",
+    value: "https://github.com/enesdemirelus/wordle-clone",
+  },
   "nasa-asteroid-classifier": {
     type: "youtube",
     value: "6ZqjnTa1Z7k",
