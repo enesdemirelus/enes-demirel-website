@@ -31,10 +31,31 @@ export default function Projects() {
       <div className="space-y-8">
         <div>
           <h1 className="text-4xl font-bold mb-4">all projects</h1>
-          <p className="text-muted-foreground">collection of my projects</p>
+          <p className="text-muted-foreground">
+            collection of my projects, sorted by date (most recent first).
+          </p>
         </div>
 
-        <div>
+        <a
+          href="https://rfq.airblox.com/auth?redirectTo=%2F"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-4 border rounded-lg p-4 transition-all hover:border-foreground/40 hover:shadow-md bg-background/50 backdrop-blur-sm"
+        >
+          <div className="text-3xl">✈️</div>
+          <div className="flex-grow">
+            <h3 className="text-lg font-bold group-hover:text-foreground/80 transition-colors">
+              my internship work
+            </h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              UI work I shipped as a software developer intern at Airblox.
+              see the experience section for details.
+            </p>
+          </div>
+          <ArrowUpRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </a>
+
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map((category) => (
               <button
@@ -55,7 +76,7 @@ export default function Projects() {
             ))}
           </div>
 
-          <div className="text-xs text-muted-foreground mt-2">
+          <div className="text-xs text-muted-foreground whitespace-nowrap">
             {filteredProjects.length} project
             {filteredProjects.length !== 1 ? "s" : ""}
             {selectedCategories.length > 0 && (

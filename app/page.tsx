@@ -11,46 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Coffee,
-  Code2,
-  ArrowUpRight,
-  FileText,
-} from "lucide-react";
+import { Github, Linkedin, Mail, Coffee, Code2, FileText } from "lucide-react";
 import Image from "next/image";
 
 import { TerminalDemo } from "@/components/terminal-demo";
 import { HackathonTimeline } from "@/components/hackathon-timeline";
-
-const featuredProjects = [
-  {
-    slug: "nasa-asteroid-classifier",
-    emoji: "☄️",
-    title: "nasa asteroid classifier",
-    description:
-      "binary classifier that predicts whether a near-earth asteroid is hazardous using a keras neural network trained on nasa data. features a fastapi backend and next.js frontend, both deployed on railway.",
-    tags: ["python", "tensorflow", "keras", "fastapi", "next.js", "railway"],
-  },
-  {
-    slug: "popduel",
-    emoji: "⚔️",
-    title: "PopDuel",
-    description:
-      "movies battle head-to-head until your group finally picks what to watch. expo react native app for ios and android, still in active development.",
-    tags: ["react native", "expo", "typescript", "firebase", "tmdb api"],
-  },
-  {
-    slug: "kaza-namazlarim",
-    emoji: "🕌",
-    title: "kaza namazlarim",
-    description:
-      "a web app for tracking and managing missed (qada) prayers, built with next.js, supabase, and clerk auth.",
-    tags: ["next.js", "typescript", "supabase", "clerk", "tailwindcss"],
-  },
-];
+import { ProjectTicker } from "@/components/project-ticker";
 
 const experience = [
   {
@@ -101,7 +67,9 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <section className="max-w-5xl mx-auto px-6 pt-16 pb-8">
+      <ProjectTicker />
+
+      <section className="max-w-5xl mx-auto px-6 pt-8 pb-8">
         <div className="space-y-6">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
@@ -114,7 +82,7 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-3 pt-2">
             <Button asChild>
-              <a href="#projects">see my work</a>
+              <Link href="/projects">see my work</Link>
             </Button>
             <Button variant="outline" asChild>
               <a
@@ -140,76 +108,6 @@ export default function Home() {
         </div>
 
         <TerminalDemo onFootballClick={() => setIsModalOpen(true)} />
-      </section>
-
-      <section id="projects" className="max-w-5xl mx-auto px-6 py-8">
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-2xl font-bold mb-2">main projects</h2>
-            <p className="text-muted-foreground">
-              stuff i've built or still working on.
-              <br />
-              <br />
-              note: most of these projects will open a youtube video because i
-              dont want to pay for hosting anymore. You can visit github for the
-              code.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {featuredProjects.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/projects/${project.slug}`}
-                className="group"
-              >
-                <Card className="h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="text-3xl">{project.emoji}</div>
-                      <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <CardDescription className="line-clamp-3">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-
-            <Link href="/projects" className="group">
-              <Card className="border-dashed h-full transition-all hover:shadow-lg hover:border-foreground/20">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="text-3xl">📁</div>
-                    <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <CardTitle className="text-xl">more projects</CardTitle>
-                  <CardDescription className="line-clamp-3">
-                    explore my complete portfolio of projects, experiments, and
-                    side projects. from full-stack applications to machine
-                    learning models and everything in between.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline">view all →</Badge>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
-        </div>
       </section>
 
       <section id="about" className="max-w-5xl mx-auto px-6 py-8">

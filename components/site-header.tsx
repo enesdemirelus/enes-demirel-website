@@ -14,8 +14,8 @@ export function SiteHeader() {
           <span>enesdemirel</span>
         </Link>
         <div className="flex gap-6 text-sm items-center">
-          <Link href="/#projects" className="hover:underline hidden sm:inline">
-            projects
+          <Link href="/projects" className="hover:underline hidden sm:inline">
+            my work
           </Link>
           <Link href="/#about" className="hover:underline hidden sm:inline">
             about
