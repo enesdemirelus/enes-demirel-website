@@ -1,26 +1,26 @@
-"use client";
-import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { Github, ExternalLink } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import { redirect } from "next/navigation";
+import { DesktopProjectView } from "@/components/project/desktop-view";
+import { MobileProjectView } from "@/components/project/mobile-view";
 import { projects, projectLinks } from "@/lib/projects";
+import { getRepoInfo, getRepoReadme, repoPath } from "@/lib/repo";
 
-function ProjectPage() {
-  const params = useParams();
-  const router = useRouter();
-  const projectSlug = params.project as string;
-  const projectData = projects.find((p) => p.slug === projectSlug);
-  const projectLink = projectLinks[projectSlug];
+export const revalidate = 3600;
 
-  useEffect(() => {
-    if (projectLink?.type === "redirect") {
-      router.push(projectLink.value);
-    }
-  }, [projectLink, router]);
+export function generateStaticParams() {
+  return projects.map((p) => ({ project: p.slug }));
+}
 
-  if (!projectData || !projectLink) {
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ project: string }>;
+}) {
+  const { project: projectSlug } = await params;
+  const project = projects.find((p) => p.slug === projectSlug);
+  const link = projectLinks[projectSlug];
+
+  if (!project || !link) {
     return (
       <section className="max-w-5xl mx-auto px-6 py-8 grow w-full">
         <div className="text-center">
@@ -33,143 +33,29 @@ function ProjectPage() {
     );
   }
 
-  if (projectLink.type === "redirect") {
-    return (
-      <div className="grow flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-muted-foreground">Redirecting...</p>
-        </div>
-      </div>
-    );
+  if (link.type === "redirect") {
+    redirect(link.value);
   }
 
+  const repoUrl = link.type === "github" ? link.value : link.githubRepo;
+  const repo = repoUrl ? repoPath(repoUrl) : null;
+  const [info, readme] = await Promise.all([
+    repo ? getRepoInfo(repo) : null,
+    repo && link.type === "github" ? getRepoReadme(repo) : null,
+  ]);
+
+  const viewProps = { project, link, repoUrl, repo, info, readme };
+
+  // Same URL, two layouts: phones get their own view instead of a squeezed
+  // desktop page.
   return (
-    <section className="max-w-5xl mx-auto px-6 py-8 grow w-full">
-      <div className="space-y-6">
-        <div className="space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-            {projectData.title}
-          </h1>
-          <div className="flex flex-wrap gap-2">
-            {projectData.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </div>
-
-        {projectLink.type === "youtube" && (
-          <div className="space-y-4">
-            <div className="relative w-full aspect-video rounded-xl overflow-hidden border shadow-lg">
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube.com/embed/${projectLink.value}`}
-                title={projectData.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-
-            {(projectLink.githubRepo || projectLink.liveUrl) && (
-              <div className="flex items-center justify-center gap-3 flex-wrap">
-                {projectLink.liveUrl && (
-                  <Button asChild size="lg">
-                    <a
-                      href={projectLink.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="gap-2"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Visit Live Site
-                    </a>
-                  </Button>
-                )}
-                {projectLink.githubRepo && (
-                  <Button asChild variant="outline" size="lg">
-                    <a
-                      href={projectLink.githubRepo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="gap-2"
-                    >
-                      <Github className="w-5 h-5" />
-                      View Source Code on GitHub
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
-        {projectLink.type === "github" && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 rounded-lg border bg-muted/50">
-              <div className="flex items-center gap-3">
-                <Github className="w-5 h-5" />
-                <span className="font-mono text-sm">
-                  {projectLink.value.replace("https://github.com/", "")}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                {projectLink.liveUrl && (
-                  <Button asChild size="sm">
-                    <a
-                      href={projectLink.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="gap-2"
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      Visit Live Site
-                    </a>
-                  </Button>
-                )}
-                <Button asChild variant="outline" size="sm">
-                  <a
-                    href={projectLink.value}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="gap-2"
-                  >
-                    Open in GitHub
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            <div
-              className="relative w-full rounded-xl overflow-hidden border shadow-lg bg-card"
-              style={{ height: "700px" }}
-            >
-              <iframe
-                className="w-full h-full"
-                src={`https://github1s.com/${projectLink.value.replace("https://github.com/", "")}`}
-                title={projectData.title}
-                style={{ border: "none" }}
-              />
-            </div>
-
-            <p className="text-sm text-muted-foreground text-center">
-              Browse the code above with VS Code interface, or{" "}
-              <a
-                href={projectLink.value}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                open in GitHub
-              </a>
-            </p>
-          </div>
-        )}
+    <>
+      <div className="md:hidden grow flex flex-col">
+        <MobileProjectView {...viewProps} />
       </div>
-    </section>
+      <div className="hidden md:flex grow flex-col">
+        <DesktopProjectView {...viewProps} />
+      </div>
+    </>
   );
 }
-
-export default ProjectPage;
