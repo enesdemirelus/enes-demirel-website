@@ -30,6 +30,15 @@ export const CATEGORIES = [
 
 export const projects: Project[] = [
   {
+    emoji: "🔢",
+    title: "MNIST Neural Network from Scratch",
+    description:
+      "a two-layer neural network that recognizes handwritten digits, written with nothing but numpy. forward pass, backpropagation and gradient descent all done by hand, reaching 90.5% accuracy on the mnist test set.",
+    tags: ["python", "numpy", "neural networks", "backpropagation"],
+    categories: ["Machine Learning", "Python"],
+    slug: "mnist-from-scratch",
+  },
+  {
     emoji: "🟩",
     title: "Wordle Clone",
     description:
@@ -263,6 +272,10 @@ export const projects: Project[] = [
 ];
 
 export const projectLinks: Record<string, ProjectLink> = {
+  "mnist-from-scratch": {
+    type: "github",
+    value: "https://github.com/enesdemirelus/mnist-using-numpy",
+  },
   "wordle-clone": {
     type: "github",
     value: "https://github.com/enesdemirelus/wordle-clone",
