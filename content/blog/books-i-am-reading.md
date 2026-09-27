@@ -29,8 +29,28 @@ This is a very low number for me to read in 3 years. So, I want to start reading
 
 **Frequently Asked Questions about the Universe** by *Daniel Whiteson and Jorge Cham*
 
-I was always interested in outer space. However, I never thought about going in deep, mostly because I was scared of the astrophysics. However, I want to go deeper on that and learn more. Will rate after I am done.
+Status: Finished (09/20 - 09/26)
 
-Update: I kind of started reading this book today (09/20/26). So far, it is really good.
+Rating: 4.5 out of 5
 
+</div>
+
+<div class="entry-box">
+
+**Dark Matter** by *Blake Crouch*
+
+Status: Finished (09/26 - 09/27)
+
+Rating: 4 out of 5
+</div>
+
+</div>
+
+<div class="entry-box">
+
+**Recursion** by *Blake Crouch*
+
+Status: Reading (09/27 - TBD)
+
+Rating: TBD
 </div>
