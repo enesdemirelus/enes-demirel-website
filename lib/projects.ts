@@ -30,6 +30,23 @@ export const CATEGORIES = [
 
 export const projects: Project[] = [
   {
+    emoji: "🪐",
+    title: "Something in the Way",
+    description:
+      "deep learning for crater detection and crater-aware route planning on mars. compares a u-net, a fine-tuned faster r-cnn and a frozen dinov3 on ~52k orbital images (faster r-cnn wins with 0.80 f1), then drives two simulated rovers across the detected crater map: one planning with a*, one a small neural net that learned to copy it. includes a paper.",
+    tags: [
+      "python",
+      "pytorch",
+      "faster r-cnn",
+      "u-net",
+      "dinov3",
+      "computer vision",
+      "a*",
+    ],
+    categories: ["Machine Learning", "Python"],
+    slug: "something-in-the-way",
+  },
+  {
     emoji: "🔢",
     title: "MNIST Neural Network from Scratch",
     description:
@@ -272,6 +289,10 @@ export const projects: Project[] = [
 ];
 
 export const projectLinks: Record<string, ProjectLink> = {
+  "something-in-the-way": {
+    type: "github",
+    value: "https://github.com/enesdemirelus/something-in-the-way",
+  },
   "mnist-from-scratch": {
     type: "github",
     value: "https://github.com/enesdemirelus/mnist-using-numpy",
